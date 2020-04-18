@@ -1,8 +1,6 @@
 // Load store modules dynamically.
 const requireContext = require.context('../modules', true, /store\.js$/)
 
-// console.log(requireContext.keys())
-
 const modules = requireContext.keys()
     .map(file =>
         [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]

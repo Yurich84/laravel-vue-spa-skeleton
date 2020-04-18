@@ -8,8 +8,8 @@
 </p>
 
 ## Install
-- `git clone https://github.com/Yurich84/uco-test.git`
-- `cd uco-test`
+- `git clone https://github.com/Yurich84/laravel-vue-spa-sceleton.git`
+- `cd laravel-vue-spa-sceleton`
 - `composer install`
 - `yarn`
 - `yarn dev`

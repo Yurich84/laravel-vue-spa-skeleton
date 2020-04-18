@@ -8,7 +8,7 @@
                 <label for="groupSelect">Состояние</label>
                 <select v-model="filter.group" class="form-control" id="groupSelect">
                     <option value="" selected>Выберите состояние</option>
-                    <option v-for="(group, i) in brandGroupList" :value="i">{{ group }}</option>
+                    <option v-for="(group, i) in config.brandGroupList" :value="i">{{ group }}</option>
                 </select>
             </div>
             <div class="col-6 form-check">
@@ -40,36 +40,17 @@
                 :key="brand.id"
                 @click="$router.push({ name: 'brands_edit', params: { id: brand.id } })">
                 <th v-for="field in fields" :key="field">
-                    <span v-if="field === 'group'">{{ brandGroupList[brand[field]] }}</span>
+                    <span v-if="field === 'group'">{{ config.brandGroupList[brand[field]] }}</span>
                     <span v-else-if="field === 'select'">{{ brand[field] === 1 ? 'да' : 'Нет'}}</span>
                     <span v-else>{{ brand[field] }}</span>
                 </th>
             </tr>
         </table>
-
-        <paginate
-            v-model="page"
-            :page-count="brandsMeta.last_page || NaN"
-            :click-handler="pageNum => $router.push({ name: 'brands_index', params: { page: pageNum } })"
-            :prev-text="'Prev'"
-            :next-text="'Next'"
-            :container-class="'pagination'"
-            :page-class="'page-item'"
-            :page-link-class="'page-link'"
-            :prev-class="'page-item'"
-            :prev-link-class="'page-link'"
-            :next-class="'page-item'"
-            :next-link-class="'page-link'"
-            :break-view-class="'break-view'"
-            :break-view-link-class="'break-view-link'">
-        </paginate>
-
     </div>
 </template>
 
 <script>
 
-    import Paginate from 'vuejs-paginate'
     import {mapActions, mapGetters, mapMutations} from 'vuex'
     import {
         BRAND_CLEAR,
@@ -80,9 +61,6 @@
     } from "../store/types";
 
     export default {
-        components: {
-            Paginate
-        },
         data() {
             return {
                 fields: ['id', 'name', 'group', 'select'],

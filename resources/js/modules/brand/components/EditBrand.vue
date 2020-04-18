@@ -31,7 +31,7 @@
 
 <script>
 
-    import * as brandApi from "../api"
+    import brandApi from "../api"
 
     export default {
         name: "EditBrand",
@@ -49,7 +49,7 @@
         },
         methods: {
             async fetchBrand() {
-                const response = await brandApi.fetchBrandById(this.$route.params.id)
+                const response = await brandApi.find(this.$route.params.id)
                 this.form = response.data.data
             },
             checkForm () {
@@ -69,7 +69,7 @@
 
             submitForm(e) {
                 if(this.checkForm()) {
-                    brandApi.updateBrand(this.form, this.$route.params.id).then(() => {
+                    brandApi.all(this.form, this.$route.params.id).then(() => {
                         this.$notify({
                             group: 'app',
                             type: 'success',

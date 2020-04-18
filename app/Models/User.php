@@ -10,13 +10,22 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const COLUMN_ID = 'id';
+    const COLUMN_NAME = 'name';
+    const COLUMN_EMAIL = 'email';
+    const COLUMN_PASSWORD = 'password';
+    const COLUMN_REMEMBER_TOKEN = 'remember_token';
+    const COLUMN_EMAIL_VERIFIED_AT = 'email_verified_at';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        self::COLUMN_NAME,
+        self::COLUMN_EMAIL,
+        self::COLUMN_PASSWORD,
     ];
 
     /**
@@ -25,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        self::COLUMN_PASSWORD, self::COLUMN_REMEMBER_TOKEN,
     ];
 
     /**
@@ -34,6 +43,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        self::COLUMN_EMAIL_VERIFIED_AT => 'datetime',
     ];
 }

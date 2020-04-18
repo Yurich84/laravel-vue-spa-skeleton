@@ -2,9 +2,9 @@ import Vue from 'vue'
 import * as bootstrap from './bootstrap'
 import App from './components/App'
 
-Vue.prototype.brandGroupList = window.brandGroupList;
+bootstrap.setupPlugins(Vue)
 
-bootstrap.setupPlugins(Vue);
+Vue.prototype.config = window.config
 
 window.Vue = new Vue({
     ...bootstrap.createInstanceOptions(Vue),

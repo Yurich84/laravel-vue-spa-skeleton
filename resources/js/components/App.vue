@@ -1,20 +1,13 @@
 <template>
     <div class="app">
-        <Notificator></Notificator>
         <router-view :key="$route.fullPath"></router-view>
     </div>
 </template>
 
 <script>
-    import Notificator from '../modules/notification/components/Notificator'
-
+    import notificationMixin from '../modules/notification/components/notificationMixin'
     export default {
         name: 'App',
-        components: {
-            Notificator
-        },
-        methods:{
-
-        },
+        mixins: [notificationMixin]
     }
 </script>
