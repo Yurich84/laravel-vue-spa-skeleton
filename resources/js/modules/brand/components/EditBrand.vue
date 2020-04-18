@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="groupSelect">Состояние</label>
                 <select v-model="form.group" class="form-control" id="groupSelect">
-                    <option v-for="(group, i) in brandGroupList" :value="i">{{ group }}</option>
+                    <option v-for="(group, i) in config.brandGroupList" :value="i">{{ group }}</option>
                 </select>
             </div>
             <div class="form-check">
