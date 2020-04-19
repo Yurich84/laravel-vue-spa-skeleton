@@ -1,10 +1,14 @@
+import Vue from 'vue'
 import moment from 'moment'
 
-export const momentPlugin = {
+
+const momentPlugin = {
     install(Vue) {
         Vue.prototype.moment = moment
     }
 }
+
+Vue.use(momentPlugin)
 
 export const changeMomentLocale = function (locale) {
     moment.updateLocale(locale, {

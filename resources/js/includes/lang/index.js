@@ -1,5 +1,5 @@
 import {en} from './en'
 
-export const messages = {
+export default {
     en
 }

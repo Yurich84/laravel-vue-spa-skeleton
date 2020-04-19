@@ -1,7 +1,10 @@
+import Vue from "vue";
 import VueRouter from "vue-router";
 import {routes} from "../includes/routes";
 
-export const router = new VueRouter({
+Vue.use(VueRouter)
+
+const router = new VueRouter({
     routes,
     mode: 'history',
     scrollBehavior(to, from, savedPosition) {
@@ -16,3 +19,7 @@ export const router = new VueRouter({
         })
     }
 })
+
+Vue.router = router
+
+export default router

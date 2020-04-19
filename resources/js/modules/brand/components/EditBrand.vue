@@ -57,7 +57,7 @@
                     return true;
                 }
 
-                this.form.errors = [];
+                this.errors = [];
 
                 if (!this.form.name) {
                     this.errors.push('Требуется указать название.');
@@ -70,24 +70,12 @@
             submitForm(e) {
                 if(this.checkForm()) {
                     brandApi.all(this.form, this.$route.params.id).then(() => {
-                        this.$notify({
-                            group: 'app',
-                            type: 'success',
-                            text: 'Бренд обновлен'
-                        })
+                        this.$message.success('Бренд обновлен')
                         this.$router.go(-1)
                     }).catch(error => {
-                        let message = 'Неизвесная ошибка сервера'
-
                         if(!!error.errors) {
-                            message = error.data.errors[0]
+                            this.$message.error(error.data.errors[0])
                         }
-
-                        this.$notify({
-                            group: 'app',
-                            type: 'error',
-                            text: message
-                        })
                     })
                 }
             }

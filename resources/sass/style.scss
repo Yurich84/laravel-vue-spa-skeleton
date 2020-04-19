@@ -1,0 +1,26 @@
+@import "variables";
+
+.page-title {
+
+}
+
+.el-dialog {
+    @media screen and (max-width: $--sm - 1) {
+        width: 100% !important;
+        border-radius: 0;
+    }
+
+    .el-dialog__header {
+        padding-right: 35px;
+    }
+
+    @media (max-width: $--xs - 1) {
+        .el-form-item__label {
+            width: auto !important;
+        }
+        .el-form-item__content {
+            clear: both;
+            margin-left: 0 !important;
+        }
+    }
+}

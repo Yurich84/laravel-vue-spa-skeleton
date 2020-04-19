@@ -1,6 +1,8 @@
 <template>
     <div class="app">
-        <router-view :key="$route.fullPath"></router-view>
+        <transition name="fade" mode="out-in">
+            <router-view :key="$route.fullPath"></router-view>
+        </transition>
     </div>
 </template>
 
