@@ -15,9 +15,9 @@ axios.defaults.baseURL = process.env.MIX_API_ENDPOINT
 axios.interceptors.response.use(response => response, error => {
 
     if (error.response.status === 401 && store.getters['isLoggedIn']) {
-        MessageBox.confirm(this.$t('auth.token_expired_alert_text'), this.$t('auth.token_expired_alert_title'), {
-            confirmButtonText: this.$t('global.ok'),
-            cancelButtonText: this.$t('global.cancel'),
+        MessageBox.confirm(window.Vue.$t('auth.token_expired_alert_text'), window.Vue.$t('auth.token_expired_alert_title'), {
+            confirmButtonText: window.Vue.$t('global.ok'),
+            cancelButtonText: window.Vue.$t('global.cancel'),
             type: 'warning'
         }).then(() => {
             store.commit('logOut')
@@ -26,9 +26,10 @@ axios.interceptors.response.use(response => response, error => {
     } else if (error.response.data.errors) {
         console.log('validate errors')
     } else if (error.response.data.message) {
-        this.$message.error(error.response.data.message);
+        Message.error(window.Vue.$t('global.unknown_server_error'))
+        console.error(error.response.data.message)
     } else {
-        Message.error(this.$t('global.unknown_server_error'))
+        Message.error(window.Vue.$t('global.unknown_server_error'))
     }
 
     return Promise.reject(error)
@@ -55,9 +56,4 @@ Vue.use(VueAuth, {
     logoutData:     { url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: '/login' },
     registerData:   {url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST'},
     fetchData:      { url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST' },
-    tokenExpired: () => false,
-    parseUserData: function (data) {
-        // bus.$emit('userLoggedIn', data.data);
-        return data.data;
-    },
 });

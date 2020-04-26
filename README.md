@@ -8,7 +8,7 @@
 </p>
 
 ## Install
-- `git clone https://github.com/Yurich84/laravel-vue-spa-sceleton.git`
+- `git clone https://github.com/Yurich84/laravel-vue-spa-skeleton.git`
 - `cd laravel-vue-spa-sceleton`
 - `composer install`
 - `yarn`

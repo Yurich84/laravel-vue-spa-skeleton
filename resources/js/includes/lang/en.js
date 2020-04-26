@@ -16,6 +16,15 @@ export const en = {
     auth: {
         token_expired_alert_title: 'Session Expired!',
         token_expired_alert_text: 'Please log in again to continue.',
+        login: {
+
+        },
+        logout_confirm: {
+            title: 'Confirm LogOut',
+            text: 'You will be logged out',
+            button_ok: 'Ok',
+            button_cancel: 'Cancel',
+        }
     },
     ...enLocale
 }

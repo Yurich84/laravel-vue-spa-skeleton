@@ -13,6 +13,7 @@
         <div id="app"></div>
         <script>
             window.config = @json([
+                'appName' => config('app.name'),
                 'brandGroupList' => \App\Models\Brand::GROUP_LIST,
             ])
         </script>
