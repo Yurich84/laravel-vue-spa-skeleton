@@ -8,7 +8,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::post('email/verify/{user}', 'Auth\VerificationController@verify')->name('verification.verify');
+    Route::post('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify');
     Route::post('email/resend', 'Auth\VerificationController@resend');
 
 });
@@ -19,7 +19,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::group(['prefix' => 'auth'], function () {
         Route::post('logout', 'Auth\LoginController@logout');
-        Route::get('me', 'Auth\UserController@me');
+        Route::post('me', 'Auth\UserController@me');
     });
 
     Route::patch('settings/profile', 'Settings\ProfileController@update');

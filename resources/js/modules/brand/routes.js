@@ -1,10 +1,15 @@
+/**
+ * AutoImporting components
+ * @param path
+ * @returns {function(): *}
+ */
 function page (path) {
     return () => import(/* webpackChunkName: '' */ `./components/${path}`).then(m => m.default || m)
 }
 
 export const routes = [
     {
-        path: '/:page?',
+        path: '/brands/:page?',
         name: 'brands_index',
         component: page('BrandList'),
     },

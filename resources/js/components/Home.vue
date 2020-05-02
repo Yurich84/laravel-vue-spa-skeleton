@@ -25,22 +25,21 @@
                          @select="handleSelect"
                          router
                          :collapse="collapsed">
-                    <template v-for="(item,index) in $router.options.routes[0].children" v-if="menuItemIsAvailable(item)">
-                        <el-submenu :index="index+''" v-if="!item.meta.leaf">
+                    <template v-for="(item,index) in $router.options.routes[0].children">
+                        <el-submenu :index="index+''" v-if="item.children">
                             <template slot="title">
-                                <i :class="item.meta.uiIcon"></i>
-                                <span slot="title">{{ $t(item.meta.nameTransKey) }}</span>
+                                <i class="fa fa-user"></i>
+                                <span slot="title">{{ $t(item.name) }}</span>
                             </template>
                             <el-menu-item :route="child" v-for="child in item.children"
                                           :index="child.path"
-                                          :key="child.path"
-                                          v-if="menuItemIsAvailable(child)">
-                                <span slot="title">{{ $t(child.meta.nameTransKey) }}</span>
+                                          :key="child.path">
+                                <span slot="title">{{ $t(child.name) }}</span>
                             </el-menu-item>
                         </el-submenu>
-                        <el-menu-item :route="item" v-if="item.meta.leaf" :index="item.path">
-                            <i :class="item.meta.uiIcon"></i>
-                            <span slot="title">{{ $t(item.meta.nameTransKey) }}</span>
+                        <el-menu-item :route="item" v-if="!item.children" :index="item.path">
+                            <i class="fa fa-user"></i>
+                            <span slot="title">{{ $t(item.name) }}</span>
                         </el-menu-item>
                     </template>
                 </el-menu>
@@ -48,16 +47,16 @@
             <section class="content-container">
                 <div class="grid-content bg-purple-light">
                     <el-col :span="24" class="breadcrumb-container">
-                        <strong class="title">{{ $t($route.meta.nameTransKey) }}</strong>
+                        <strong class="title">{{ $t($route.name) }}</strong>
                         <el-breadcrumb separator="/" class="breadcrumb-inner">
                             <el-breadcrumb-item v-for="item in $route.matched" :key="item.path">
-                                {{ $t(item.meta.nameTransKey) }}
+                                {{ $t(item.name) }}
                             </el-breadcrumb-item>
                         </el-breadcrumb>
                     </el-col>
                     <el-col :span="24" class="content-wrapper">
                         <transition name="fade" mode="out-in">
-                            <router-view></router-view>
+                            <router-view :key="$route.fullPath"></router-view>
                         </transition>
                     </el-col>
                 </div>

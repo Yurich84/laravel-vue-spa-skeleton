@@ -12,7 +12,8 @@ changeMomentLocale(DEFAULT_LANGUAGE)
 
 const i18n = new VueI18n({
     locale: DEFAULT_LANGUAGE,
-    messages
+    messages,
+    silentTranslationWarn: true
 })
 
 setI18nLanguage(DEFAULT_LANGUAGE, i18n)

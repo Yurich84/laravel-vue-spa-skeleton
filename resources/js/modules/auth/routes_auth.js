@@ -3,7 +3,7 @@ function page (path) {
 }
 
 export const ROUTE_LOGIN = 'login';
-export const ROUTE_SIGNUP = 'sign-up';
+export const ROUTE_REGISTER = 'register';
 export const ROUTE_CONFIRM_EMAIL = 'confirm-email';
 export const ROUTE_COMPLETE_REGISTRATION = 'complete-registration';
 
@@ -18,10 +18,10 @@ export default [
     },
     {
         path: '/register',
-        component: page('SignUp'),
-        name: ROUTE_SIGNUP,
+        component: page('Register'),
+        name: ROUTE_REGISTER,
         meta: {
-            nameTransKey: 'route.sign_up',
+            nameTransKey: 'route.register',
             // hidden: true
         }
     },

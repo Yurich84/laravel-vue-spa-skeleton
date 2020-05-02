@@ -14,20 +14,21 @@ axios.defaults.baseURL = process.env.MIX_API_ENDPOINT
 // Response interceptor
 axios.interceptors.response.use(response => response, error => {
 
-    if (error.response.status === 401 && store.getters['isLoggedIn']) {
+    if (error.response.status === 401 && store.getters['isAuth']) {
         MessageBox.confirm(window.Vue.$t('auth.token_expired_alert_text'), window.Vue.$t('auth.token_expired_alert_title'), {
             confirmButtonText: window.Vue.$t('global.ok'),
             cancelButtonText: window.Vue.$t('global.cancel'),
             type: 'warning'
         }).then(() => {
-            store.commit('logOut')
+            // store.commit('logOut')
             // todo redirect to login
+            console.log('logout')
         })
     } else if (error.response.data.errors) {
         console.log('validate errors')
     } else if (error.response.data.message) {
         Message.error(window.Vue.$t('global.unknown_server_error'))
-        console.error(error.response.data.message)
+        console.error('--- ', error.response.data.message)
     } else {
         Message.error(window.Vue.$t('global.unknown_server_error'))
     }

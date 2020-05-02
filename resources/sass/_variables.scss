@@ -1,4 +1,6 @@
 @import "~element-ui/packages/theme-chalk/src/common/var";
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,600');
+
 
 /* icon font path, required */
 $--font-path: '~element-ui/lib/theme-chalk/fonts';
@@ -7,7 +9,7 @@ $--font-path: '~element-ui/lib/theme-chalk/fonts';
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: 'Arial', sans-serif;
+$font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
