@@ -15,13 +15,9 @@ const modules = requireContext.keys()
 
 let moduleRoutes = [];
 
-for(let module in modules) {
-    moduleRoutes = moduleRoutes.concat(module)
+for(let i in modules) {
+    moduleRoutes = moduleRoutes.concat(modules[i][1].routes)
 }
-
-// TODO ДОДЕЛАТЬ
-
-console.log(moduleRoutes)
 
 export const routes = [
     {
