@@ -1,12 +1,12 @@
-import Index        from "../../components/Index";
-import NotFound     from "../../components/NotFound";
-import Welcome      from "../../components/Welcome";
-import Home         from "../../components/Home";
-import auth         from '../../modules/auth/routes_auth';
-import Dashboard    from "../../components/Dashboard";
+import Index        from "./components/Index";
+import NotFound     from "./components/NotFound";
+import Welcome      from "./components/Welcome";
+import Home         from "./components/Home";
+import auth         from '../modules/auth/routes_auth';
+import Dashboard    from "./components/Dashboard";
 
 // Load modules routes dynamically.
-const requireContext = require.context('../../modules', true, /routes\.js$/)
+const requireContext = require.context('../modules', true, /routes\.js$/)
 
 const modules = requireContext.keys()
     .map(file =>
@@ -27,8 +27,9 @@ export const routes = [
         children: [
             {
                 path: '/',
-                name: 'home',
-                component: Dashboard
+                name: 'Dashboard',
+                component: Dashboard,
+                iconCls: 'el-icon-menu'
             },
             ...moduleRoutes,
         ]
@@ -40,7 +41,7 @@ export const routes = [
             {
                 path: '/',
                 component: Index,
-                name: 'index'
+                name: 'index',
             },
             ...auth,
             {

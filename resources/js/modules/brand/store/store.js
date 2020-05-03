@@ -15,7 +15,7 @@ export const store = {
         },
     },
     mutations: {
-        [types.BRAND_OBTAIN_ALL](state, brands) {
+        [types.BRAND_OBTAIN](state, brands) {
             state.availableBrands = state.availableBrands.concat(brands)
         },
         [types.BRAND_CLEAR](state) {

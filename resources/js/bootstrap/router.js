@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import {routes} from "../includes/routes";
+import {routes} from "../core/routes";
 
 Vue.use(VueRouter)
 

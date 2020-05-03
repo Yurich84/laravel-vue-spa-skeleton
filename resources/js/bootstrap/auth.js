@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 import VueAuth from '@websanova/vue-auth'
-import store from '../store'
+import store from '../core/store'
 import {Message, MessageBox} from 'element-ui';
 
 Vue.use(VueAxios, axios)

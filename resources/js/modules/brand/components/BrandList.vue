@@ -1,8 +1,5 @@
 <template>
     <div class="container">
-
-        <h1 class="text-center mt-5">Brands</h1>
-
         <div class="row filter">
             <div class="col-6 form-group">
                 <label for="groupSelect">Состояние</label>
@@ -54,9 +51,9 @@
     import {mapActions, mapGetters, mapMutations} from 'vuex'
     import {
         BRAND_CLEAR,
-        BRAND_FETCH_AVAILABLE,
+        BRAND_FETCH,
         BRAND_FILTER,
-        BRAND_OBTAIN_ALL,
+        BRAND_OBTAIN,
         BRAND_SORT
     } from "../store/types";
 
@@ -83,12 +80,12 @@
             ...mapGetters(['availableBrands', 'brandsMeta', 'brandSort', 'brandFilter']),
         },
         methods: {
-            ...mapActions([BRAND_FETCH_AVAILABLE]),
-            ...mapMutations([BRAND_OBTAIN_ALL, BRAND_CLEAR, BRAND_SORT, BRAND_FILTER]),
+            ...mapActions([BRAND_FETCH]),
+            ...mapMutations([BRAND_OBTAIN, BRAND_CLEAR, BRAND_SORT, BRAND_FILTER]),
             loadTable() {
-                this[BRAND_OBTAIN_ALL] = null
+                this[BRAND_OBTAIN] = null
                 this[BRAND_CLEAR]()
-                this[BRAND_FETCH_AVAILABLE]({
+                this[BRAND_FETCH]({
                     page: this.page,
                     sort_field: this.brandSort.field,
                     sort_direction: this.brandSort.direction,

@@ -19,12 +19,12 @@
             onSubmit(loginData) {
                 this.$auth.login({
                     data: loginData,
-                    redirect: {name: 'home'},
+                    redirect: {name: 'Dashboard'},
                     success: (response) => {
-                        console.log('ok', this.$auth);
+                        // console.log('ok', this.$auth);
                     },
                     error: (reject) => {
-                        this.error = 'Login fehlerhaft'
+                        // this.error = 'Login fehlerhaft'
                     },
                 })
             }

@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import App from './components/App'
+import App from './core/App'
 import ElementUI from 'element-ui'
 import i18n from './bootstrap/i18n'
 import router from './bootstrap/router'
-import store from './store'
+import store from './core/store'
 
 import './bootstrap/auth'
 import './bootstrap/moment'

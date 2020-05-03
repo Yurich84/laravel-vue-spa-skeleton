@@ -3,19 +3,18 @@
  * @param path
  * @returns {function(): *}
  */
-function page (path) {
-    return () => import(/* webpackChunkName: '' */ `./components/${path}`).then(m => m.default || m)
-}
+const page = path => () => import(/* webpackChunkName: '' */ `./components/${path}`).then(m => m.default || m)
 
 export const routes = [
     {
         path: '/brands/:page?',
-        name: 'brands_index',
+        name: 'Brands',
         component: page('BrandList'),
     },
     {
         path: '/brands/:id/edit',
-        name: 'brands_edit',
+        name: 'Edit Brand',
         component: page('EditBrand'),
+        hidden: true
     }
 ]

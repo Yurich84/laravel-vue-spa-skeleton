@@ -2,7 +2,7 @@
     <main role="main" class="container flex-center position-ref full-height">
         <div class="top-right links">
             <template v-if="$auth.check()">
-                <router-link :to="{ name: 'home' }">
+                <router-link :to="{ name: 'Dashboard' }">
                     {{ $t('home') }}
                 </router-link>
             </template>

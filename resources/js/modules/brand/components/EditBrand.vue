@@ -1,7 +1,5 @@
 <template>
     <div id="edit_brand" class="container">
-        <h1 class="text-center mt-5">Edit brand</h1>
-
         <form @submit.prevent="submitForm">
             <div class="form-group">
                 <label for="name">Name</label>

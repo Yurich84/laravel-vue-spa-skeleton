@@ -1,6 +1,6 @@
 <template>
     <section id="Dashboard">
-        <h1>Dashboard</h1>
+
     </section>
 </template>
 
@@ -8,7 +8,7 @@
     export default {
         name: "Dashboard",
         data: () => ({
-            title: window.config.appName
+
         }),
     }
 </script>
