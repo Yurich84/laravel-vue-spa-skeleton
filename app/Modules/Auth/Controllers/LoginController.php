@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Modules\Auth\Controllers;
 
 use App\Exceptions\VerifyEmailException;
 use App\Http\Controllers\Controller;

@@ -21,7 +21,14 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/admin';
+
+    /**
+     * The Version of application api.
+     *
+     * @var string
+     */
+    public const API_PREFIX = 'api/v1';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -43,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
     public function map()
     {
         $this->mapApiRoutes();
+
+        $this->mapModulesRoutes();
 
         $this->mapWebRoutes();
 
@@ -72,10 +81,42 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::prefix('api')
+        Route::prefix(self::API_PREFIX)
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapModulesRoutes()
+    {
+        $modules_folder = app_path('Modules');
+
+        $modules =
+            array_values(
+                array_filter(
+                    scandir($modules_folder),
+                    function ($item) use($modules_folder) {
+                        return is_dir($modules_folder . DIRECTORY_SEPARATOR . $item) && !in_array($item, [".",".."]);
+                    }
+                )
+            );
+
+        foreach ($modules as $module) {
+            $routesPath   = $modules_folder . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . "routes_api.php";
+
+            if (file_exists($routesPath)) {
+                Route::namespace("\\App\\Modules\\$module\Controllers")
+                    ->prefix(self::API_PREFIX)
+                    ->group($routesPath);
+            }
+        }
     }
 
     /**

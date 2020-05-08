@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div>
         <div class="row filter">
             <div class="col-6 form-group">
                 <label for="groupSelect">Состояние</label>

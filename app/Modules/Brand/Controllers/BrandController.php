@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Brand;
+namespace App\Modules\Brand\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BrandRequest;
