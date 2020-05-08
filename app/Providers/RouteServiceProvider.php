@@ -88,7 +88,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
+     * Define the "modules" routes for the application.
      *
      * These routes are typically stateless.
      *
@@ -112,8 +112,9 @@ class RouteServiceProvider extends ServiceProvider
             $routesPath   = $modules_folder . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . "routes_api.php";
 
             if (file_exists($routesPath)) {
-                Route::namespace("\\App\\Modules\\$module\Controllers")
-                    ->prefix(self::API_PREFIX)
+                Route::prefix(self::API_PREFIX)
+                    ->middleware('api')
+                    ->namespace("\\App\\Modules\\$module\Controllers")
                     ->group($routesPath);
             }
         }

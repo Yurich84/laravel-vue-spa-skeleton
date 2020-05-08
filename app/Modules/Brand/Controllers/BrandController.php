@@ -3,9 +3,9 @@
 namespace App\Modules\Brand\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BrandRequest;
-use App\Http\Resources\BrandResource;
+use App\Modules\Brand\Requests\BrandRequest;
 use App\Models\Brand;
+use App\Modules\Brand\Resources\BrandResource;
 use Illuminate\Database\Eloquent\Builder;
 use \Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

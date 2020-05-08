@@ -53,8 +53,8 @@ Vue.use(VueAuth, {
     },
     http: require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
     router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
-    loginData:      { url: process.env.MIX_API_ENDPOINT + 'api/v1/auth/login' },
-    logoutData:     { url: process.env.MIX_API_ENDPOINT + 'api/v1/auth/logout', redirect: '/login' },
-    registerData:   { url: process.env.MIX_API_ENDPOINT + 'api/v1/auth/register', method: 'POST'},
-    fetchData:      { url: process.env.MIX_API_ENDPOINT + 'api/v1/auth/me', method: 'POST' },
+    loginData:      { url: process.env.MIX_API_ENDPOINT + 'auth/login' },
+    logoutData:     { url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: '/login' },
+    registerData:   { url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST'},
+    fetchData:      { url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST' },
 });

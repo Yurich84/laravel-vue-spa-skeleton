@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Modules\Brand\Requests;
 
 use App\Models\Brand;
 use Illuminate\Foundation\Http\FormRequest;

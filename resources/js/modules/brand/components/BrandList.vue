@@ -35,7 +35,7 @@
             </tr>
             <tr v-if="!loading" v-for="brand in availableBrands"
                 :key="brand.id"
-                @click="$router.push({ name: 'brands_edit', params: { id: brand.id } })">
+                @click="$router.push({ name: 'Edit Brand', params: { id: brand.id } })">
                 <th v-for="field in fields" :key="field">
                     <span v-if="field === 'group'">{{ config.brandGroupList[brand[field]] }}</span>
                     <span v-else-if="field === 'select'">{{ brand[field] === 1 ? 'да' : 'Нет'}}</span>
