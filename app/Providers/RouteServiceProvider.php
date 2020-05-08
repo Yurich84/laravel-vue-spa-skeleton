@@ -97,19 +97,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapModulesRoutes()
     {
         $modules_folder = app_path('Modules');
-
-        $modules =
-            array_values(
-                array_filter(
-                    scandir($modules_folder),
-                    function ($item) use($modules_folder) {
-                        return is_dir($modules_folder . DIRECTORY_SEPARATOR . $item) && !in_array($item, [".",".."]);
-                    }
-                )
-            );
+        $modules = $this->getModulesList($modules_folder);
 
         foreach ($modules as $module) {
-            $routesPath   = $modules_folder . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . "routes_api.php";
+            $routesPath   = $modules_folder . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . 'routes_api.php';
 
             if (file_exists($routesPath)) {
                 Route::prefix(self::API_PREFIX)
@@ -135,5 +126,22 @@ class RouteServiceProvider extends ServiceProvider
                 Route::view('/{any}', 'spa')
                     ->where('any', '.*');
             });
+    }
+
+    /**
+     * @param string $modules_folder
+     * @return array
+     */
+    private function getModulesList(string $modules_folder): array
+    {
+        return
+            array_values(
+                array_filter(
+                    scandir($modules_folder),
+                    function ($item) use($modules_folder) {
+                        return is_dir($modules_folder . DIRECTORY_SEPARATOR . $item) && !in_array($item, [".",".."]);
+                    }
+                )
+            );
     }
 }
