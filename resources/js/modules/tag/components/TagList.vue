@@ -4,11 +4,11 @@
         <el-col :span="24" class="m-t-10">
             <el-form :inline="true" :model="filters" @submit.native.prevent="fetchData" size="mini">
                 <el-form-item>
-                    <el-button type="primary" @click="handleAdd" icon="el-icon-plus">Add</el-button>
+                    <el-button type="primary" @click="handleAdd" icon="el-icon-plus">{{$t('global.add')}}</el-button>
                 </el-form-item>
 
                 <el-form-item class="mr-0 float-right">
-                    <el-input v-model="filters.search" @input="applySearch" placeholder="Search...">
+                    <el-input v-model="filters.search" @input="applySearch" :placeholder="$t('global.search')">
                         <i slot="suffix" class="el-input__icon el-icon-error" v-if="filters.search.length" @click="clearSearch"></i>
                     </el-input>
                 </el-form-item>
@@ -23,16 +23,16 @@
             v-loading="loading"
             @sort-change="handleSortChange"
             @filter-change="handleFilterChange"
-            style="width: 100%;">
+            class="w-100">
             <el-table-column prop="id" label="Id" width="80"></el-table-column>
-            <el-table-column prop="name" label="Name" min-width="200">
+            <el-table-column prop="name" label="Name" min-width="200" sortable>
                 <template slot-scope="scope">
                     <router-link class="el-link el-link--default ellipsis-form" :to="{name: 'Show Tag', params: {id: scope.row.id}}">
                         <span class="el-link--inner item_name">{{ scope.row.name }}</span>
                     </router-link>
                 </template>
             </el-table-column>
-            <el-table-column prop="updated_at" label="Updated" width="200" sortable=false :sort-orders="sortOrders">
+            <el-table-column prop="updated_at" label="Updated" width="200" sortable :sort-orders="sortOrders">
                 <template slot-scope="updated_at">
                     {{ GlobalFormatDate(updated_at.row.updated_at) }}
                 </template>
@@ -42,7 +42,7 @@
                     <el-tooltip
                         :open-delay="300"
                         placement="top"
-                        content="Edit">
+                        :content="$t('global.edit')">
                         <span>
                             <el-button
                                 @click="handleEdit(scope.row)"
@@ -54,7 +54,7 @@
                     <el-tooltip
                         :open-delay="300"
                         placement="top"
-                        content="Delete">
+                        :content="$t('global.delete')">
                         <span>
                             <el-button
                                 @click="handleDelete(scope.row)"
@@ -117,7 +117,7 @@
             ...mapActions([TAG_FETCH]),
             ...mapMutations([TAG_OBTAIN, TAG_CLEAR]),
             handleSortChange(val) {
-                if (val.prop != null) {
+                if (val.prop != null && val.order != null) {
                     let sort = val.order.startsWith('a') ? 'asc' : 'desc';
                     this.sortBy = val.prop + ',' + sort;
                     this.fetchData();

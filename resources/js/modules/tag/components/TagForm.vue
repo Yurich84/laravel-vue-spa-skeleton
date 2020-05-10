@@ -16,8 +16,12 @@
             </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-            <el-button @click.native="cancel" size="small">Cancel</el-button>
-            <el-button type="success" @click.native="saveSubmit" :loading="formLoading" size="small" class="float-right">Save</el-button>
+            <el-button @click.native="cancel" size="small">{{$t('global.cancel')}}</el-button>
+            <el-button type="success"
+                       @click.native="saveSubmit"
+                       :loading="formLoading"
+                       size="small"
+                       class="float-right">{{$t('global.save')}}</el-button>
         </div>
     </section>
 </template>

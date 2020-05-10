@@ -12,7 +12,7 @@
             <el-dropdown trigger="hover">
                 <span class="el-dropdown-link userinfo-inner"><img :src="sysUserAvatar"/> {{sysUserName}}</span>
                 <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item divided @click.native="logout">{{ $t('main.logout') }}</el-dropdown-item>
+                    <el-dropdown-item divided @click.native="logout">{{ $t('auth.logout.title') }}</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </el-col>

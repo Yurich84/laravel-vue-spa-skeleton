@@ -4,6 +4,12 @@ export const en = {
     global: {
         ok: 'Ok',
         cancel: 'Cancel',
+        save: 'Save',
+        add: 'Add',
+        edit: 'Edit',
+        delete: 'Delete',
+        new: 'New',
+        search: 'Search...',
         unknown_server_error: 'Unknown server error',
         form: {
             rules: {
@@ -24,6 +30,9 @@ export const en = {
             title: 'Login',
             submit_button: 'Sign In'
             // TODO fill this
+        },
+        logout: {
+            title: 'Logout',
         },
         register: {
             title: 'Register',
