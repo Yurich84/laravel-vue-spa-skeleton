@@ -21,7 +21,7 @@
                                   :route="child"
                                   :index="child.path"
                                   :key="child.path">
-                        <span slot="title">{{ $t(child.name) }}</span>
+                        <span slot="title">{{ child.name }}</span>
                     </el-menu-item>
                 </el-submenu>
             </template>

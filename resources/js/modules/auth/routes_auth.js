@@ -14,21 +14,22 @@ export default [
     {
         path: '/login',
         component: page('Login'),
-        name: ROUTE_LOGIN
+        name: ROUTE_LOGIN,
+        meta: {
+            auth: false,
+        },
     },
     {
         path: '/register',
         component: page('Register'),
-        name: ROUTE_REGISTER
+        name: ROUTE_REGISTER,
+        meta: {
+            auth: false,
+        },
     },
     {
         path: '/confirm-email/:token',
         component: page('ConfirmEmail'),
         name: ROUTE_CONFIRM_EMAIL
-    },
-    {
-        path: '/complete-registration',
-        component: page('CompleteRegistration'),
-        name: ROUTE_COMPLETE_REGISTRATION
     }
 ]
