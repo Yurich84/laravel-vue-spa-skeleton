@@ -1,8 +1,13 @@
 import * as types from './types'
 
+let collapsed = false
+if (window.innerWidth < 768) {
+    collapsed = true;
+}
+
 export const store = {
     state: {
-        isCollapsed: false
+        isCollapsed: collapsed
     },
     mutations: {
         [types.TOGGLE_COLLAPSE](state) {

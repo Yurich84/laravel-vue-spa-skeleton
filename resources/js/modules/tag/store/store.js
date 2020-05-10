@@ -5,14 +5,6 @@ export const store = {
     state: {
         tags: [],
         tagsMeta: [],
-        tagSort: {
-            field: 'id',
-            direction: 'asc'
-        },
-        tagFilter: {
-            group: '',
-            select: ''
-        },
     },
     mutations: {
         [types.TAG_OBTAIN](state, tags) {
@@ -24,18 +16,10 @@ export const store = {
         [types.TAG_META](state, meta) {
             state.tagsMeta = meta
         },
-        [types.TAG_SORT](state, sort) {
-            state.tagSort = sort
-        },
-        [types.TAG_FILTER](state, filter) {
-            state.tagFilter = filter
-        },
     },
     getters: {
         tags: state => state.tags,
         tagsMeta: state => state.tagsMeta,
-        tagSort: state => state.tagSort,
-        tagFilter: state => state.tagFilter,
     },
     actions
 }

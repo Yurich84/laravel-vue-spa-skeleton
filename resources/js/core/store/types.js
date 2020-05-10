@@ -1,2 +1,2 @@
 // Mutations
-export const TOGGLE_COLLAPSE = 'core.set_collapsed'
+export const TOGGLE_COLLAPSE = 'core.toggle_collapsed'

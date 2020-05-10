@@ -25,14 +25,14 @@
             @filter-change="handleFilterChange"
             style="width: 100%;">
             <el-table-column prop="id" label="Id" width="80"></el-table-column>
-            <el-table-column prop="name" label="Name" min-width="230">
+            <el-table-column prop="name" label="Name" min-width="200">
                 <template slot-scope="scope">
                     <router-link class="el-link el-link--default ellipsis-form" :to="{name: 'Show Tag', params: {id: scope.row.id}}">
                         <span class="el-link--inner item_name">{{ scope.row.name }}</span>
                     </router-link>
                 </template>
             </el-table-column>
-            <el-table-column prop="updated_at" label="Updated" width="230" sortable=false :sort-orders="sortOrders">
+            <el-table-column prop="updated_at" label="Updated" width="200" sortable=false :sort-orders="sortOrders">
                 <template slot-scope="updated_at">
                     {{ GlobalFormatDate(updated_at.row.updated_at) }}
                 </template>
@@ -73,7 +73,7 @@
             layout="sizes, prev, pager, next"
             :current-page.sync="page"
             :page-size.sync="globalPageSize"
-            :total="total"
+            :total="tagsMeta.total"
             class="float-right mt-3 mb-3">
         </el-pagination>
 
@@ -91,8 +91,7 @@
 <script>
 
     import {mapActions, mapGetters, mapMutations} from 'vuex'
-    import {TAG_CLEAR, TAG_FETCH, TAG_FILTER, TAG_OBTAIN, TAG_SORT} from "../store/types";
-    import {Errors} from "../../../includes/Errors";
+    import {TAG_CLEAR, TAG_FETCH, TAG_OBTAIN} from "../store/types";
     import tagApi from '../api'
     import TagForm from "./TagForm";
 
@@ -106,19 +105,17 @@
             filters: {
                 search: ''
             },
-            errors: new Errors(),
-            total: 0,
             page: 1,
             formVisible: false,
             formTitle: 'New Tag',
             formData: null
         }),
         computed: {
-            ...mapGetters(['tags', 'tagsMeta', 'tagSort', 'tagFilter']),
+            ...mapGetters(['tags', 'tagsMeta']),
         },
         methods: {
             ...mapActions([TAG_FETCH]),
-            ...mapMutations([TAG_OBTAIN, TAG_CLEAR, TAG_SORT, TAG_FILTER]),
+            ...mapMutations([TAG_OBTAIN, TAG_CLEAR]),
             handleSortChange(val) {
                 if (val.prop != null) {
                     let sort = val.order.startsWith('a') ? 'asc' : 'desc';
@@ -162,7 +159,7 @@
                     }).finally(() => this.loading = false)
                 })
             },
-            applySearch: _.debounce(() => {
+            applySearch: _.debounce( function() {
                 this.fetchData();
             }, 300),
             clearSearch() {
@@ -177,12 +174,14 @@
         created() {
             this.fetchData()
         },
-        watch: {
-            'filter.select'() {
-                this[TAG_FILTER](Object.assign({}, this.filter))
-                this.fetchData()
-            }
-        }
+        watch:{
+            page: function () {
+                this.fetchData();
+            },
+            pageSize: function () {
+                this.fetchData();
+            },
+        },
     }
 </script>
 <style lang="scss" scoped>

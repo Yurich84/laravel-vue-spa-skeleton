@@ -6,18 +6,18 @@
                  @select="handleSelect"
                  router
                  :collapse="coreIsCollapsed">
-            <template v-for="(item,index) in $router.options.routes[0].children">
+            <template v-for="(item,index) in admin_routes">
                 <el-menu-item :route="item" v-if="!item.children && !item.hidden" :index="item.path">
                     <i :class="item.iconCls || 'el-icon-s-claim'"></i>
                     <span slot="title">{{ $t(item.name) }}</span>
                 </el-menu-item>
-                <el-submenu :index="index+''" v-if="item.children">
+                <el-submenu :index="index+''" v-if="item.children && !item.hidden">
                     <template slot="title">
                         <i :class="item.iconCls || 'el-icon-s-claim'"></i>
-                        <span slot="title">{{ $t(item.name) }}</span>
+                        <span slot="title">{{ item.name }}</span>
                     </template>
                     <el-menu-item v-for="child in item.children"
-                                  v-if="!item.hidden"
+                                  v-if="!child.hidden"
                                   :route="child"
                                   :index="child.path"
                                   :key="child.path">
@@ -35,11 +35,9 @@
     export default {
         name: "Sidebar",
         components: {},
-        data() {
-            return {
-                collapsed: false,
-            }
-        },
+        data: () => ({
+
+        }),
         methods: {
             menuItemIsAvailable(item) {
                 let allowed = !item.meta.hidden;
@@ -57,13 +55,11 @@
             handleSelect: function (a, b) {
             },
         },
-        mounted() {
-            if (window.innerWidth < 768) {
-                this.collapsed = true;
-            }
-        },
         computed: {
-            ...mapGetters(['coreIsCollapsed'])
+            ...mapGetters(['coreIsCollapsed']),
+            admin_routes() {
+                return this.$router.options.routes[0].children
+            }
         }
     }
 </script>
