@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_ENDPOINT = 'tag'
+const API_ENDPOINT = 'tags'
 
 export default {
 

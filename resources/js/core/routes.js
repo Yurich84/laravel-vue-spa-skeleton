@@ -3,7 +3,7 @@ import NotFound     from "./components/NotFound";
 import Welcome      from "./components/Welcome";
 import Home         from "./components/Home";
 import auth         from '../modules/auth/routes_auth';
-import Dashboard    from "./components/Dashboard";
+import Dashboard    from "../modules/dashboard/components/Dashboard";
 
 // Load modules routes dynamically.
 const requireContext = require.context('../modules', true, /routes\.js$/)
@@ -25,12 +25,6 @@ export const routes = [
         component: Home,
         meta: {auth: true},
         children: [
-            {
-                path: '/',
-                name: 'Dashboard',
-                component: Dashboard,
-                iconCls: 'el-icon-menu'
-            },
             ...moduleRoutes,
         ]
     },

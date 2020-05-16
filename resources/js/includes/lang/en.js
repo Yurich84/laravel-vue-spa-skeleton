@@ -47,5 +47,11 @@ export const en = {
             button_cancel: 'Cancel',
         }
     },
+    setting: {
+        profile: {
+            name: 'Name',
+            email: 'Email',
+        }
+    },
     ...enLocale
 }
