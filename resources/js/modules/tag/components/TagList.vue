@@ -20,7 +20,7 @@
         <el-table
             :data="tags"
             highlight-current-row
-            v-loading="loading"
+            v-loading="tagsLoading"
             @sort-change="handleSortChange"
             @filter-change="handleFilterChange"
             class="w-100">
@@ -91,7 +91,7 @@
 <script>
 
     import {mapActions, mapGetters, mapMutations} from 'vuex'
-    import {TAG_CLEAR, TAG_FETCH, TAG_OBTAIN} from "../store/types";
+    import {TAG_FETCH, TAG_OBTAIN} from "../store/types";
     import tagApi from '../api'
     import TagForm from "./TagForm";
 
@@ -101,7 +101,6 @@
         data: () => ({
             sortBy: 'id,asc',
             sortOrders: ['ascending', 'descending'],
-            loading: true,
             filters: {
                 search: ''
             },
@@ -111,11 +110,22 @@
             formData: null
         }),
         computed: {
-            ...mapGetters(['tags', 'tagsMeta']),
+            ...mapGetters(['tags', 'tagsMeta', 'tagsLoading']),
+        },
+        created() {
+            this.fetchData()
+        },
+        watch:{
+            page: function () {
+                this.fetchData();
+            },
+            pageSize: function () {
+                this.fetchData();
+            },
         },
         methods: {
             ...mapActions([TAG_FETCH]),
-            ...mapMutations([TAG_OBTAIN, TAG_CLEAR]),
+            ...mapMutations([TAG_OBTAIN]),
             handleSortChange(val) {
                 if (val.prop != null && val.order != null) {
                     let sort = val.order.startsWith('a') ? 'asc' : 'desc';
@@ -133,7 +143,7 @@
                     sortBy: this.sortBy,
                     pageSize: this.globalPageSize
                 };
-                this[TAG_FETCH](params).finally(() => this.loading = false)
+                this[TAG_FETCH](params)
             },
             handleAdd() {
                 this.formTitle = 'New Tag';
@@ -149,14 +159,13 @@
                 this.$confirm('This will permanently delete the tag. Continue?', 'Warning', {
                     type: 'warning'
                 }).then(() => {
-                    this.loading = true;
                     tagApi.delete(row.id).then((response) => {
                         this.$message({
                             message: response.data.message,
                             type: response.data.type
                         })
                         this.fetchData()
-                    }).finally(() => this.loading = false)
+                    })
                 })
             },
             applySearch: _.debounce( function() {
@@ -170,18 +179,7 @@
                 this.formVisible = false
                 this.fetchData()
             }
-        },
-        created() {
-            this.fetchData()
-        },
-        watch:{
-            page: function () {
-                this.fetchData();
-            },
-            pageSize: function () {
-                this.fetchData();
-            },
-        },
+        }
     }
 </script>
 <style lang="scss" scoped>

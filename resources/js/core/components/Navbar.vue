@@ -44,7 +44,6 @@
         },
         mounted() {
             const user = this.$auth.user();
-            // console.log(this.$router.options.routes[0].children)
             if (user) {
                 this.sysUserName = user.name || '';
                 this.sysUserAvatar = user.avatar || '';
