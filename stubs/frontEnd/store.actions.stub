@@ -1,0 +1,12 @@
+import * as types from './types'
+import dummyVariableSingularApi from '../api'
+
+export const actions = {
+    async [types.DUMMY_VARIABLE_SINGULAR_FETCH]({commit}, data = null) {
+        commit(types.DUMMY_VARIABLE_SINGULAR_SET_LOADING, true)
+        const response = await dummyVariableSingularApi.all(data)
+        commit(types.DUMMY_VARIABLE_SINGULAR_OBTAIN, response.data.data)
+        commit(types.DUMMY_VARIABLE_SINGULAR_META, response.data.meta)
+        commit(types.DUMMY_VARIABLE_SINGULAR_SET_LOADING, false)
+    },
+}

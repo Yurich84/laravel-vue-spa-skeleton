@@ -1,0 +1,30 @@
+import * as types from './types'
+import {actions} from './actions'
+
+export const store = {
+    state: {
+        dummyVariablePlural: [],
+        dummyVariablePluralMeta: [],
+        dummyVariablePluralLoading: true,
+    },
+    getters: {
+        dummyVariablePlural: state => state.dummyVariablePlural,
+        dummyVariablePluralMeta: state => state.dummyVariablePluralMeta,
+        dummyVariablePluralLoading: state => state.dummyVariablePluralLoading,
+    },
+    mutations: {
+        [types.DUMMY_VARIABLE_SINGULAR_OBTAIN](state, dummyVariablePlural) {
+            state.dummyVariablePlural = dummyVariablePlural
+        },
+        [types.DUMMY_VARIABLE_SINGULAR_CLEAR](state) {
+            state.dummyVariablePlural = []
+        },
+        [types.DUMMY_VARIABLE_SINGULAR_SET_LOADING](state, loading) {
+            state.dummyVariablePluralLoading = loading
+        },
+        [types.DUMMY_VARIABLE_SINGULAR_META](state, meta) {
+            state.dummyVariablePluralMeta = meta
+        },
+    },
+    actions
+}

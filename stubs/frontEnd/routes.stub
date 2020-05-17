@@ -1,0 +1,20 @@
+/**
+ * AutoImporting components
+ * @param path
+ * @returns {function(): *}
+ */
+const page = path => () => import(/* webpackChunkName: '' */ `./components/${path}`).then(m => m.default || m)
+
+export const routes = [
+    {
+        path: '/dummyVariablePlural',
+        name: 'DummyPlural',
+        component: page('DummySingularList'),
+    },
+    {
+        path: '/dummyVariablePlural/:id',
+        name: 'Show DummySingular',
+        component: page('DummySingularView'),
+        hidden: true
+    }
+]

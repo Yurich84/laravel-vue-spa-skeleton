@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Modules\Tag\Controllers;
+namespace DummyRootNamespaceModules\DummySingular\Controllers;
 
-use App\Models\Tag;
-use App\Modules\Tag\Requests\TagRequest;
-use App\Modules\Tag\Resources\TagResource;
-use App\Http\Controllers\Controller;
+use DummyRootNamespaceModels\DummySingular;
+use DummyRootNamespaceModules\DummySingular\Requests\DummySingularRequest;
+use DummyRootNamespaceModules\DummySingular\Resources\DummySingularResource;
+use DummyRootNamespaceHttp\Controllers\Controller;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
 use \Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use \Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class TagController extends Controller
+class DummySingularController extends Controller
 {
     /**
      * @param Request $request
@@ -23,25 +23,25 @@ class TagController extends Controller
         [$column, $order] = explode(',', $request->input('sortBy', 'id,asc'));
         $pageSize = (int) $request->input('pageSize', 10);
 
-        $resource = Tag::query()
+        $resource = DummySingular::query()
             ->when($request->filled('search'), function (Builder $q) use ($request) {
-                $q->where(Tag::COLUMN_NAME, 'like', '%' . $request->search . '%');
+                $q->where(DummySingular::COLUMN_NAME, 'like', '%' . $request->search . '%');
             })
             ->orderBy($column, $order)->paginate($pageSize);
 
-        return TagResource::collection($resource);
+        return DummySingularResource::collection($resource);
     }
 
     /**
      * Store a newly created resource in storage.
-     * @param TagRequest $request
+     * @param DummySingularRequest $request
      * @return JsonResponse
      */
-    public function store(TagRequest $request)
+    public function store(DummySingularRequest $request)
     {
         $data = $request->validated();
-        $tag = new Tag($data);
-        $tag->save();
+        $dummyVariableSingular = new DummySingular($data);
+        $dummyVariableSingular->save();
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
             'message' => 'Successfully created'
@@ -51,25 +51,25 @@ class TagController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Tag $tag
-     * @return TagResource
+     * @param DummySingular $dummyVariableSingular
+     * @return DummySingularResource
      */
-    public function show(Tag $tag)
+    public function show(DummySingular $dummyVariableSingular)
     {
-        return new TagResource($tag);
+        return new DummySingularResource($dummyVariableSingular);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param TagRequest $request
-     * @param Tag $tag
+     * @param DummySingularRequest $request
+     * @param DummySingular $dummyVariableSingular
      * @return JsonResponse
      */
-    public function update(TagRequest $request, Tag $tag)
+    public function update(DummySingularRequest $request, DummySingular $dummyVariableSingular)
     {
         $data = $request->validated();
-        $tag->fill($data)->save();
+        $dummyVariableSingular->fill($data)->save();
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
             'message' => 'Successfully updated'
@@ -77,13 +77,13 @@ class TagController extends Controller
     }
 
     /**
-     * @param Tag $tag
+     * @param DummySingular $dummyVariableSingular
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(Tag $tag)
+    public function destroy(DummySingular $dummyVariableSingular)
     {
-        $tag->delete();
+        $dummyVariableSingular->delete();
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
             'message' => 'Successfully deleted'

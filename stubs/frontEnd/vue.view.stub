@@ -1,0 +1,33 @@
+<template>
+    <section id="dummyVariableSingular_show">
+        <div class="text-center">{{ dummyVariableSingular.name }}</div>
+    </section>
+</template>
+
+<script>
+
+    import dummyVariableSingularApi from "../api"
+
+    export default {
+        name: "DummySingularView",
+        components: {},
+        data() {
+            return {
+                dummyVariableSingular: {},
+            }
+        },
+        methods: {
+            async fetchDummySingular() {
+                const response = await dummyVariableSingularApi.find(this.$route.params.id)
+                this.dummyVariableSingular = response.data.data
+            },
+        },
+        mounted() {
+            this.fetchDummySingular()
+        },
+    }
+</script>
+
+<style lang="scss" scoped>
+
+</style>

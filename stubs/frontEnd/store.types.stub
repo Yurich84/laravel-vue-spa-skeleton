@@ -1,0 +1,8 @@
+// Actions
+export const DUMMY_VARIABLE_SINGULAR_FETCH  = '[DummySingular] Fetch'
+
+// Mutations
+export const DUMMY_VARIABLE_SINGULAR_META   = '[DummySingular] meta'
+export const DUMMY_VARIABLE_SINGULAR_OBTAIN = '[DummySingular] obtain'
+export const DUMMY_VARIABLE_SINGULAR_CLEAR  = '[DummySingular] clear'
+export const DUMMY_VARIABLE_SINGULAR_SET_LOADING = '[DummySingular] set loading'
