@@ -7,6 +7,10 @@
 #### Basement for a large modular SPA, using Laravel, Vue, ElementUI, Bootstrap. 
 #### With a CRUD generator in the form of an standalone module on the frontend and backend.
 
+<p align="center">
+    <img width="100%" src="https://i.imgur.com/VNa5jOg.png" >
+</p>
+
 This is a template for a medium to large project that:
 - will help to avoid hard cohesion between modules
 - will be understandable for an inexperienced programmer
