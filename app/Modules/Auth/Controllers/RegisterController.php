@@ -34,8 +34,6 @@ class RegisterController extends Controller
     protected function registered(Request $request, User $user)
     {
         if ($user instanceof MustVerifyEmail) {
-            $user->sendEmailVerificationNotification();
-
             return response()->json(['status' => trans('verification.sent')]);
         }
 

@@ -2,7 +2,7 @@
     <section id="dummyVariableSingular-form">
         <el-form
             :model="form"
-            label-width="100px"
+            label-width="120px"
             ref="form"
             :rules="rules"
             size="small"
