@@ -55,7 +55,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        $this->mapAllOthersToHomePage();
+        $this->mapSPARoutes();
     }
 
     /**
@@ -88,6 +88,23 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
+     * All non matchable resources we will show standard Vue page,
+     *
+     * and redirect it through VueRoutes on client side
+     *
+     * @return void
+     */
+    protected function mapSPARoutes()
+    {
+        Route::namespace($this->namespace)
+            ->middleware('web')
+            ->group(function () {
+                Route::view('/{any}', 'spa')
+                    ->where('any', '.*');
+            });
+    }
+
+    /**
      * Define the "modules" routes for the application.
      *
      * These routes are typically stateless.
@@ -109,23 +126,6 @@ class RouteServiceProvider extends ServiceProvider
                     ->group($routesPath);
             }
         }
-    }
-
-    /**
-     * All non matchable resources we will show standard Vue page,
-     *
-     * and redirect it through VueRoutes on client side
-     *
-     * @return void
-     */
-    protected function mapAllOthersToHomePage()
-    {
-        Route::namespace($this->namespace)
-            ->middleware('web')
-            ->group(function () {
-                Route::view('/{any}', 'spa')
-                    ->where('any', '.*');
-            });
     }
 
     /**

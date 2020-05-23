@@ -24,7 +24,7 @@ This is a template for a medium to large project that:
 
 - BackEnd: [Laravel 7](https://laravel.com/)
 - FrontEnd: [Vue](https://vuejs.org) + [VueRouter](https://router.vuejs.org) + [Vuex](https://vuex.vuejs.org) + [VueI18n](https://kazupon.github.io/vue-i18n/)
-- Login using [JWT](https://jwt.io/) with [Vue-Auth](https://github.com/websanova/vue-auth), [Axios](https://github.com/mzabriskie/axios) and [JWT-Auth](https://github.com/tymondesigns/jwt-auth).
+- Login using [JWT](https://jwt.io/) with [Vue-Auth](https://websanova.com/docs/vue-auth/home), [Axios](https://github.com/mzabriskie/axios) and [JWT-Auth](https://github.com/tymondesigns/jwt-auth).
 - The api routes, are separate for each module, in **Modules/{ModuleName}/routes_api.php**
 - [ElementUI](http://element.eleme.io/) UI Kit 
 - [Lodash](https://lodash.com) js utilities
@@ -40,12 +40,14 @@ This is a template for a medium to large project that:
 - `php artisan migrate`
 - `npm install`
 
-##Usage
+## Usage
 - `npm run watch` or `npm run hot` # for hot reloading
 - `php artisan serve` and go [127.0.0.1:8000](http://127.0.0.1:8000)
 - Login with `admin@app.com`, password `password` or create new user.
 
 ### Creating module
+You can easily create module with CRUD functionality.
+ 
 `php artisan make:module {ModuleName}`
 
 This will create: 
@@ -89,6 +91,11 @@ This will create:
     ├── types.js
     └── actions.js
 ```
+
+
+> After creating module, you can edit model and migration by adding fields you need. 
+> Also you can add this fields into view.
+> Don't forget run php artisan migrate.
 
 Every module loads dynamically.
 

@@ -3,7 +3,6 @@ import NotFound     from "./components/NotFound";
 import Welcome      from "./components/Welcome";
 import Home         from "./components/Home";
 import auth         from '../modules/auth/routes_auth';
-import Dashboard    from "../modules/dashboard/components/Dashboard";
 
 // Load modules routes dynamically.
 const requireContext = require.context('../modules', true, /routes\.js$/)
