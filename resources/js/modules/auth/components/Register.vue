@@ -11,6 +11,7 @@
 
 <script>
     import RegisterForm from "./RegisterForm";
+    import {ROUTE_LOGIN} from "../routes_auth";
 
     export default {
         name: 'Register',
@@ -28,7 +29,7 @@
                 this.isLoading = true;
                 this.$auth.register({
                     data: signUpFormData,
-                    redirect: '',
+                    redirect: {name: ROUTE_LOGIN},
                     success: function (res) {
                         self.isLoading = false;
                         this.$message.success(this.$t('auth.register.success'))

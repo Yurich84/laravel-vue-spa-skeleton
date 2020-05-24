@@ -8,7 +8,6 @@ const page = path => () => import(/* webpackChunkName: '' */ `./components/${pat
 export const ROUTE_LOGIN = 'login';
 export const ROUTE_REGISTER = 'register';
 export const ROUTE_CONFIRM_EMAIL = 'confirm-email';
-export const ROUTE_COMPLETE_REGISTRATION = 'complete-registration';
 
 export default [
     {

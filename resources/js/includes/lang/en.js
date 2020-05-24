@@ -28,17 +28,21 @@ export const en = {
         token_expired_alert_text: 'Please log in again to continue.',
         login: {
             title: 'Login',
-            submit_button: 'Sign In'
-            // TODO fill this
+            submit_button: 'Sign In',
+            email_label: 'Email',
+            password_label: 'Password',
         },
         logout: {
             title: 'Logout',
         },
         register: {
             title: 'Register',
+            name_label: 'Name',
+            email_label: 'Email',
+            password_label: 'Password',
+            password_confirmation_label: 'Repeat password',
             submit_button: 'Sign Up',
             success: 'Thanks for registration.'
-            // TODO fill this
         },
         logout_confirm: {
             title: 'Confirm LogOut',

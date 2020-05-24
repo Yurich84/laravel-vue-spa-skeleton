@@ -1,12 +1,12 @@
 <template>
     <el-form @submit="onSubmit" :model="form" :rules="rules" ref="loginForm" label-width="120px">
-        <el-form-item prop="email" label="Email" class="form-group">
+        <el-form-item prop="email" :label="$t('auth.login.email_label')" class="form-group">
             <el-input
                 type="text"
                 v-model="form.email"
                 :error="$t(formErrors.get('email'))"></el-input>
         </el-form-item>
-        <el-form-item prop="password" label="Password" class="form-group">
+        <el-form-item prop="password" :label="$t('auth.login.password_label')" class="form-group">
             <el-input type="password"
                       v-model="form.password"
                       show-password
@@ -35,8 +35,8 @@
                     password: ''
                 },
                 rules: {
-                    email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('login.email_label')}), trigger: 'blur'}],
-                    password:   [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('login.password_label')}), trigger: 'blur'}],
+                    email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.email_label')}), trigger: 'blur'}],
+                    password:   [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.password_label')}), trigger: 'blur'}],
                 },
                 formErrors: new Errors()
             }

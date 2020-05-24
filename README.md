@@ -34,16 +34,19 @@ This is a template for a medium to large project that:
 
 ## Install
 - `git clone https://github.com/Yurich84/laravel-vue-spa-skeleton.git`
-- `cd laravel-vue-spa-sceleton`
+- `cd laravel-vue-spa-skeleton`
 - `composer install`
+- `cp .env.example .env` - copy .env file
 - set your DB credentials in `.env`
+- `php artisan key:generate`
+- `php artisan jwt:secret --force`
 - `php artisan migrate`
 - `npm install`
 
 ## Usage
-- `npm run watch` or `npm run hot` # for hot reloading
+- `npm run watch` or `npm run hot` - for hot reloading
 - `php artisan serve` and go [127.0.0.1:8000](http://127.0.0.1:8000)
-- Login with `admin@app.com`, password `password` or create new user.
+- Create new user and login.
 
 ### Creating module
 You can easily create module with CRUD functionality.
