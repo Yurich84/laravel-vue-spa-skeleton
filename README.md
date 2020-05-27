@@ -4,21 +4,21 @@
 <img height="80" src="https://cdn.worldvectorlogo.com/logos/element-ui-1.svg">
 </p>
 
-#### Basement for a large modular SPA, using Laravel, Vue, ElementUI, Bootstrap. 
-#### With a CRUD generator in the form of an standalone module on the frontend and backend.
+#### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI, Bootstrap. 
+#### CRUD generator is integrated in project in the form of a standalone module on the frontend and backend.
 
 <p align="center">
     <img width="100%" src="https://i.imgur.com/VNa5jOg.png" >
 </p>
 
-This is a template for a medium to large project that:
-- will help to avoid hard cohesion between modules
-- will be understandable for an inexperienced programmer
-- helps to avoid code duplication
-- will be easy to expand
-- reduce the start time of the project
-- reduce the time of project support and code navigation
-- lays the foundation for writing clean code
+The main goals of the project are:
+- to avoid hard cohesion between modules
+- to form the basis for writing clean code
+- to be easy to expand
+- to avoid code duplication
+- to reduce the start time of the project
+- to reduce the time of project support and code navigation
+- to be understandable for an inexperienced programmer
 
 ## Extensions
 
