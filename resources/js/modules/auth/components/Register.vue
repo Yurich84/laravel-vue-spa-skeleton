@@ -34,7 +34,9 @@
                         self.isLoading = false;
                         this.$message.success(this.$t('auth.register.success'))
                     },
-                    error: function (err) {
+                    error: function (error) {
+                        if (error.response.status === 422)
+                            this.authErrors = error.response.data.errors
                         self.isLoading = false
                     },
                 })

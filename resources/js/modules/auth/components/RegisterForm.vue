@@ -48,7 +48,7 @@
     import {Errors} from "../../../includes/Errors";
 
     export default {
-        name: 'SignUpForm',
+        name: 'RegisterForm',
         props: {
             errors: Object,
             isLoading: Boolean,
