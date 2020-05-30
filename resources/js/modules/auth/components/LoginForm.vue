@@ -1,5 +1,5 @@
 <template>
-    <el-form @submit="onSubmit" :model="form" :rules="rules" ref="loginForm" label-width="120px">
+    <el-form @keyup.enter.native="onSubmit" :model="form" :rules="rules" ref="loginForm" label-width="120px">
         <el-form-item prop="email" :label="$t('auth.login.email_label')" class="form-group">
             <el-input
                 type="text"

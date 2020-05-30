@@ -1,7 +1,7 @@
 <template>
     <el-form :model="form"
              :rules="rules"
-             v-on:submit.prevent="onSubmit"
+             @keyup.enter.native="onSubmit"
              label-width="130px"
              ref="registerForm">
         <el-form-item prop="name"
