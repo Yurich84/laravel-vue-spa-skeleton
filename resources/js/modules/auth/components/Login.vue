@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>{{ $t('auth.login.title') }}</h1>
-        <login-form @submit="onSubmit"></login-form>
+        <login-form @submit="onSubmit" :errors="authErrors" :loading="loading"></login-form>
     </div>
 </template>
 
@@ -12,19 +12,23 @@
         components: {LoginForm},
         data() {
             return {
-
+                authErrors: {},
+                loading: false,
             }
         },
         methods: {
             onSubmit(loginData) {
+                const self = this;
                 this.$auth.login({
                     data: loginData,
                     redirect: {name: 'Dashboard'},
-                    success: (response) => {
-                        // console.log('ok', this.$auth);
+                    success: response => {
+                        self.loading = false;
                     },
-                    error: (reject) => {
-                        // this.error = 'Login fehlerhaft'
+                    error: error => {
+                        if (error.response.status === 422)
+                            this.authErrors = error.response.data.errors
+                        self.loading = false;
                     },
                 })
             }

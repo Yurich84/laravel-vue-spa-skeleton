@@ -1,11 +1,7 @@
 <template>
     <div>
         <h1>{{ $t('auth.register.title') }}</h1>
-        <register-form
-            @submit="onSubmit"
-            :is-loading="isLoading"
-            :errors="authErrors">
-        </register-form>
+        <register-form @submit="onSubmit" :loading="loading" :errors="authErrors"></register-form>
     </div>
 </template>
 
@@ -18,24 +14,29 @@
         components: {RegisterForm},
         data() {
             return {
-                loginLink : 'login',
-                isLoading: false,
+                loading: false,
                 authErrors: {},
             }
         },
         methods: {
             onSubmit(signUpFormData) {
                 const self = this;
-                this.isLoading = true;
+                this.loading = true;
                 this.$auth.register({
                     data: signUpFormData,
                     redirect: {name: ROUTE_LOGIN},
-                    success: function (res) {
-                        self.isLoading = false;
-                        this.$message.success(this.$t('auth.register.success'))
+                    success: function (response) {
+                        self.loading = false;
+                        if(response.data.status) {
+                            this.$message.success(response.data.status)
+                        } else {
+                            this.$message.success(this.$t('auth.register.success'))
+                        }
                     },
-                    error: function (err) {
-                        self.isLoading = false
+                    error: function (error) {
+                        if (error.response.status === 422)
+                            this.authErrors = error.response.data.errors
+                        self.loading = false
                     },
                 })
             },

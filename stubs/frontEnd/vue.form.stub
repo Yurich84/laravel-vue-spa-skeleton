@@ -37,17 +37,19 @@
                 default: () => ({})
             },
         },
-        data: () => ({
-            errors: new Errors(),
-            formLoading: false,
-            formTitle: 'New DummySingular',
-            form: {},
-            rules: {
-                name: [
-                    {required: true, message: 'dummyVariableSingular name is required'},
-                ],
-            },
-        }),
+        data() {
+            return {
+                errors: new Errors(),
+                formLoading: false,
+                formTitle: 'New DummySingular',
+                form: {},
+                rules: {
+                    name: [
+                        {required: true, message: 'dummyVariableSingular name is required'},
+                    ],
+                },
+            }
+        },
         methods: {
             saveSubmit() {
                 this.$refs['form'].validate((valid) => {

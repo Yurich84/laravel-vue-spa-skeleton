@@ -41,7 +41,7 @@
                     ],
                     email: [
                         {required:true, message: this.$t('form.rules.required', { 'fieldName': this.$t('setting.profile.email')}), trigger: 'blur'},
-                        { type: 'email', message: 'Please input correct email address', trigger: ['blur', 'change'] }
+                        { type: 'email', message: this.$t('form.rules.email'), trigger: ['blur', 'change'] }
                     ],
                 },
                 errors: new Errors()
@@ -55,7 +55,7 @@
                         this.loading = true
                         this.errors.clear()
 
-                        settingApi.update(this.form).then((response) => {
+                        settingApi.update(this.form).then(response => {
                             this.$message({
                                 message: response.data.message,
                                 type: response.data.type

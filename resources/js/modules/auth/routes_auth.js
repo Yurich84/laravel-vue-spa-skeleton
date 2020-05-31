@@ -5,9 +5,10 @@
  */
 const page = path => () => import(/* webpackChunkName: '' */ `./components/${path}`).then(m => m.default || m)
 
-export const ROUTE_LOGIN = 'login';
-export const ROUTE_REGISTER = 'register';
-export const ROUTE_CONFIRM_EMAIL = 'confirm-email';
+export const ROUTE_LOGIN = 'Login';
+export const ROUTE_REGISTER = 'Register';
+export const ROUTE_VERIFICATION_EMAIL = 'Verification email';
+export const ROUTE_VERIFICATION_RESEND = 'Verification resend';
 
 export default [
     {
@@ -27,8 +28,13 @@ export default [
         },
     },
     {
-        path: '/confirm-email/:token',
-        component: page('ConfirmEmail'),
-        name: ROUTE_CONFIRM_EMAIL
+        path: 'email/verify/:user',
+        component: page('VerifyEmail'),
+        name: ROUTE_VERIFICATION_EMAIL
+    },
+    {
+        path: 'email/resend/verification',
+        component: page('ResendVerification'),
+        name: ROUTE_VERIFICATION_RESEND
     }
 ]
