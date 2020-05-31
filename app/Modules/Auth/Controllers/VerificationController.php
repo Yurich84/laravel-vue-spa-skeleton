@@ -26,10 +26,10 @@ class VerificationController extends Controller
      * Mark the user's email address as verified.
      *
      * @param Request $request
-     * @param  User $user
+     * @param  User $id
      * @return JsonResponse
      */
-    public function verify(Request $request, User $user)
+    public function verify(Request $request, User $id)
     {
         if (! URL::hasValidSignature($request)) {
             return response()->json([
@@ -37,15 +37,15 @@ class VerificationController extends Controller
             ], 400);
         }
 
-        if ($user->hasVerifiedEmail()) {
+        if ($id->hasVerifiedEmail()) {
             return response()->json([
                 'status' => trans('verification.already_verified'),
             ], 400);
         }
 
-        $user->markEmailAsVerified();
+        $id->markEmailAsVerified();
 
-        event(new Verified($user));
+        event(new Verified($id));
 
         return response()->json([
             'status' => trans('verification.verified'),

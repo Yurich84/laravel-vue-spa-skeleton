@@ -27,8 +27,13 @@ export default [
         },
     },
     {
-        path: '/confirm-email/:token',
-        component: page('ConfirmEmail'),
+        path: 'email/verify/:user',
+        component: page('VerifyEmail'),
+        name: ROUTE_CONFIRM_EMAIL
+    },
+    {
+        path: 'email/resend/verification',
+        component: page('ResendVerification'),
         name: ROUTE_CONFIRM_EMAIL
     }
 ]

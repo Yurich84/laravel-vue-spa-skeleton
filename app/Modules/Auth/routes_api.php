@@ -10,7 +10,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'ResetPasswordController@reset');
 
-    Route::post('email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify');
+    Route::get('email/verify/{user}', 'VerificationController@verify')->name('verification.verify');
     Route::post('email/resend', 'VerificationController@resend');
 
     Route::group(['middleware' => 'auth:api'], function () {
