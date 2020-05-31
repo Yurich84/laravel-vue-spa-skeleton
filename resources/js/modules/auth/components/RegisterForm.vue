@@ -37,7 +37,7 @@
                       show-password></el-input>
         </el-form-item>
         <el-form-item style="width:100%;">
-            <el-button class="w-100" @click.prevent="onSubmit" :loading="isLoading">
+            <el-button class="w-100" @click.prevent="onSubmit" :loading="loading">
                 {{ $t('auth.register.submit_button') }}
             </el-button>
         </el-form-item>
@@ -51,7 +51,7 @@
         name: 'RegisterForm',
         props: {
             errors: Object,
-            isLoading: Boolean,
+            loading: Boolean,
         },
         data() {
             return {
@@ -87,6 +87,11 @@
                 formErrors: new Errors()
             }
         },
+        watch: {
+            errors: function (val) {
+                this.formErrors.record(this.errors);
+            }
+        },
         methods: {
             onSubmit(e) {
                 this.validateForm('registerForm').then((valid)=>{
@@ -110,11 +115,6 @@
                     callback();
                 }
             },
-        },
-        watch: {
-            errors: function (val) {
-                this.formErrors.record(val);
-            }
         }
     }
 </script>

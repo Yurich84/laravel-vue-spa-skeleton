@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
@@ -10,14 +11,20 @@ class RegisterTest extends TestCase
     /** @test */
     public function can_register()
     {
-        $this->postJson(self::PATH_PREFIX . 'auth/register', [
+        $response = $this->postJson(self::PATH_PREFIX . 'auth/register', [
             'name' => 'Test User',
             'email' => 'test@test.app',
             'password' => 'secret',
             'password_confirmation' => 'secret',
         ])
-        ->assertSuccessful()
-        ->assertJsonStructure(['id', 'name', 'email']);
+        ->assertSuccessful();
+
+        if(new User instanceof MustVerifyEmail) {
+            $response->assertJson(['status' => 'We have e-mailed your verification link!']);
+        } else {
+            $response->assertJsonStructure(['id', 'name', 'email']);
+        }
+
     }
 
     /** @test */
