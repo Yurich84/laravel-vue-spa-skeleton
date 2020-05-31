@@ -13,12 +13,11 @@ axios.defaults.baseURL = process.env.MIX_API_ENDPOINT
 // Response interceptor
 axios.interceptors.response.use(response => response, error => {
 
-    if (error.response.data.errors) {
-        // validate errors
-    } else if (error.response.data.message) {
-        Message.error(window.Vue.$t('global.unknown_server_error'))
+    if (error.response.data.message) {
         console.error('--- ', error.response.data.message)
-    } else {
+    }
+
+    if (error.response.status >= 500) {
         Message.error(window.Vue.$t('global.unknown_server_error'))
     }
 

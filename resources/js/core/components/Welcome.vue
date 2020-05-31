@@ -7,10 +7,10 @@
                 </router-link>
             </template>
             <template v-else>
-                <router-link :to="{ name: 'login' }">
+                <router-link :to="{ name: 'Login' }">
                     {{ $t('auth.login.title') }}
                 </router-link>
-                <router-link :to="{ name: 'register' }">
+                <router-link :to="{ name: 'Register' }">
                     {{ $t('auth.register.title') }}
                 </router-link>
             </template>

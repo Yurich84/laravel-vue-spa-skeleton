@@ -26,6 +26,13 @@ export const en = {
     auth: {
         token_expired_alert_title: 'Session Expired!',
         token_expired_alert_text: 'Please log in again to continue.',
+        verification: {
+            resend_link: 'Resend verification',
+            resend_title: 'Resend verification',
+            resend_button: 'Send',
+            failed: 'The verification link is invalid.',
+        },
+        resend_verification_link: 'Resend verification email',
         login: {
             title: 'Login',
             submit_button: 'Sign In',
