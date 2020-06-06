@@ -63,7 +63,7 @@
                 rules: {
                     email: [
                         {required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.register.email_label')}), trigger: 'blur'},
-                        { type: 'email', message: this.$t('global.form.rules.email'), trigger: ['blur', 'change'] }
+                        { type: 'email', message: this.$t('global.form.rules.email'), trigger: 'blur' }
                     ],
                     name: [
                         {required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.register.name_label')}), trigger: 'blur'},

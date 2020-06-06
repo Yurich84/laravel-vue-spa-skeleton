@@ -5,6 +5,7 @@
                       :error="$t(formErrors.get('email'))"
                       class="form-group">
             <el-input
+                name="email"
                 type="text"
                 v-model="form.email"
             ></el-input>
@@ -13,9 +14,11 @@
                       :label="$t('auth.login.password_label')"
                       :error="$t(formErrors.get('password'))"
                       class="form-group">
-            <el-input type="password"
-                      v-model="form.password"
-                      show-password
+            <el-input
+                name="password"
+                type="password"
+                v-model="form.password"
+                show-password
             ></el-input>
         </el-form-item>
         <el-form-item style="width:100%;">

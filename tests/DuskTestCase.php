@@ -15,13 +15,19 @@ Browser::macro('assertPageIs', function ($page) {
         $page = new $page;
     }
     // waiting for location before asserting, because window.location.pathname may be updated asynchronously
-    return $this->waitForLocation($page->url())->assertPathIs($page->url());
+    return $this->waitForLocation($page->url(), 5)->assertPathIs($page->url());
 });
 
 abstract class DuskTestCase extends BaseTestCase
 {
     use DatabaseMigrations;
     use CreatesApplication;
+
+    public function browse(\Closure $callback)
+    {
+        parent::browse($callback);
+        static::$browsers->first()->driver->manage()->deleteAllCookies();
+    }
 
     /**
      * Prepare for Dusk test execution.
@@ -44,7 +50,7 @@ abstract class DuskTestCase extends BaseTestCase
         $options = (new ChromeOptions)->addArguments([
             '--disable-gpu',
             '--headless',
-            '--window-size=1280,720',
+            '--window-size= 1280,720',
         ]);
 
         return RemoteWebDriver::create(

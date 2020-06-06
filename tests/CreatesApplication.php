@@ -18,6 +18,9 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
+        $app['config']->set('database.default','mysql');
+        $app['config']->set('database.connections.mysql.database', 'skeleton_test');
+
         return $app;
     }
 }
