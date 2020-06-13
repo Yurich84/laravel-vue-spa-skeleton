@@ -21,7 +21,7 @@ Browser::macro('assertPageIs', function ($page) {
 abstract class DuskTestCase extends BaseTestCase
 {
     use DatabaseMigrations;
-    use CreatesApplication;
+    use CreatesDuskApplication;
 
     public function browse(\Closure $callback)
     {
