@@ -59,6 +59,10 @@ This will create:
 
 - **model** `app/Models/{ModuleName}.php`
 
+- **factory** `database/factories/{ModuleName}Factory.php`
+
+- **tests** `tests/Feature/{ModuleName}Test.php`
+
 - **backend module** `app/Modules/{ModuleName}/`
 ```
 {ModuleName}/

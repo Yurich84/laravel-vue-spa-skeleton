@@ -78,6 +78,10 @@ class MakeModuleCommand extends Command
 
         $frontEndModule->create($this->module);
 
+        $this->createFactory();
+
+        $this->createTest();
+
     }
 
 
@@ -109,6 +113,40 @@ class MakeModuleCommand extends Command
             ]);
         } catch (Exception $e) {
             $this->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Create a factory file for the module.
+     *
+     * @return void
+     */
+    protected function createFactory()
+    {
+        $this->call("make:factory", [
+            'name' => $this->module . 'Factory',
+            '--model' => "Models\\{$this->module}"
+        ]);
+    }
+
+    /**
+     * Create a test file for the module.
+     *
+     * @return void
+     * @throws FileNotFoundException
+     */
+    protected function createTest()
+    {
+        $path = base_path('tests/Feature/' . $this->module . 'Test.php');
+
+        if ($this->alreadyExists($path)) {
+            $this->error('Test file already exists!');
+        } else {
+            $stub = (new Filesystem)->get(base_path('stubs/test.stub'));
+
+            $this->createFileWithStub($stub, $path);
+
+            $this->info('Tests created successfully.');
         }
     }
 

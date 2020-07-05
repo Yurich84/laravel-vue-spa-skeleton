@@ -58,7 +58,6 @@ class MakeBackEndModule extends MakeModuleCommand
 
             $this->info('Controller created successfully.');
         }
-
     }
 
 

@@ -1,0 +1,109 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\DummySingular;
+use Tests\TestCase;
+
+class DummySingularTest extends TestCase
+{
+    /** @var User */
+    protected $user;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->user = factory(User::class)->create();
+    }
+
+    /** @test */
+    public function create_dummyVariableSingular()
+    {
+        $this->actingAs($this->user)
+            ->postJson(route('dummyVariablePlural.store'), [
+                'name' => 'Lorem'
+            ])
+            ->assertSuccessful()
+            ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
+
+        $this->assertDatabaseHas('dummyVariablePlural', [
+            'name' => 'Lorem',
+        ]);
+    }
+
+    /** @test */
+    public function update_dummyVariableSingular()
+    {
+        $dummyVariableSingular = factory(DummySingular::class)->create();
+
+        $this->actingAs($this->user)
+            ->putJson(route('dummyVariablePlural.update', $dummyVariableSingular->id), [
+                'name' => 'Updated dummyVariableSingular',
+            ])
+            ->assertSuccessful()
+            ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
+
+        $this->assertDatabaseHas('dummyVariablePlural', [
+            'id' => $dummyVariableSingular->id,
+            'name' => 'Updated dummyVariableSingular',
+        ]);
+    }
+
+    /** @test */
+    public function show_dummyVariableSingular()
+    {
+        $dummyVariableSingular = factory(DummySingular::class)->create();
+
+        $this->actingAs($this->user)
+            ->getJson(route('dummyVariablePlural.show', $dummyVariableSingular->id))
+            ->assertSuccessful()
+            ->assertJson([
+                'data' => [
+                    'name' => $dummyVariableSingular->name,
+                ]
+            ]);
+    }
+
+    /** @test */
+    public function list_dummyVariableSingular()
+    {
+        $dummyVariablePlural = factory(DummySingular::class, 2)->create()->map(function ($dummyVariableSingular) {
+            return $dummyVariableSingular->only(['id', 'name']);
+        });
+
+        $this->actingAs($this->user)
+            ->getJson(route('dummyVariablePlural.index'))
+            ->assertSuccessful()
+            ->assertJson([
+                 'data' => $dummyVariablePlural->toArray()
+            ])
+            ->assertJsonStructure([
+                'data' => [
+                    '*' => ['id', 'name']
+                ],
+                'links',
+                'meta'
+            ]);
+    }
+
+    /** @test */
+    public function delete_dummyVariableSingular()
+    {
+        $dummyVariableSingular = factory(DummySingular::class)->create([
+            'name' => 'DummySingular for delete',
+        ]);
+
+        $this->actingAs($this->user)
+            ->deleteJson(route('dummyVariablePlural.update', $dummyVariableSingular->id))
+            ->assertSuccessful()
+            ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
+
+        $this->assertDatabaseMissing('dummyVariablePlural', [
+            'id' => $dummyVariableSingular->id,
+            'name' => 'DummySingular for delete',
+        ]);
+    }
+}
