@@ -5,7 +5,7 @@
 </p>
 
 #### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI, Bootstrap. 
-#### CRUD generator is integrated in project in the form of a standalone module on the frontend and backend.
+#### CRUD generator is integrated in project creates standalone modules on the frontend and backend.
 
 <p align="center">
     <img width="100%" src="https://i.imgur.com/VNa5jOg.png" >
