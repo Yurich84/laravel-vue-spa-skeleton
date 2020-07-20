@@ -21,7 +21,7 @@
         "element-ui": "^2.13.1",
         "jquery": "^3.5.0",
         "laravel-mix": "^5.0.4",
-        "lodash": "^4.17.15",
+        "lodash": "^4.17.19",
         "moment": "^2.24.0",
         "popper.js": "^1.16.1",
         "resolve-url-loader": "^2.3.1",
