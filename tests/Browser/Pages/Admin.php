@@ -2,6 +2,7 @@
 
 namespace Tests\Browser\Pages;
 
+use Facebook\WebDriver\Exception\TimeOutException;
 use Laravel\Dusk\Browser;
 
 class Admin extends Page
@@ -19,8 +20,9 @@ class Admin extends Page
     /**
      * Assert that the browser is on the page.
      *
-     * @param  Browser  $browser
+     * @param Browser $browser
      * @return void
+     * @throws TimeOutException
      */
     public function assert(Browser $browser)
     {
@@ -44,6 +46,7 @@ class Admin extends Page
      *
      * @param Browser $browser
      * @return void
+     * @throws TimeOutException
      */
     public function clickLogout($browser)
     {

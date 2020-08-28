@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Closure;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
@@ -23,7 +24,7 @@ abstract class DuskTestCase extends BaseTestCase
     use DatabaseMigrations;
     use CreatesDuskApplication;
 
-    public function browse(\Closure $callback)
+    public function browse(Closure $callback)
     {
         parent::browse($callback);
         static::$browsers->first()->driver->manage()->deleteAllCookies();
