@@ -13,7 +13,7 @@ class LoginTest extends DuskTestCase
     /** @test */
     public function login_with_valid_credentials()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit(new Login)
@@ -25,7 +25,7 @@ class LoginTest extends DuskTestCase
     /** @test */
     public function log_out_the_user()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->browse(function ($browser) use ($user) {
             $browser->visit(new Login)

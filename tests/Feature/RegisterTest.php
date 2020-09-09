@@ -30,7 +30,7 @@ class RegisterTest extends TestCase
     /** @test */
     public function can_not_register_with_existing_email()
     {
-        factory(User::class)->create(['email' => 'test@test.app']);
+        User::factory()->create(['email' => 'test@test.app']);
 
         $this->postJson(self::PATH_PREFIX . 'auth/register', [
             'name' => 'Test User',
