@@ -22,7 +22,7 @@ The main goals of the project are:
 
 ## Extensions
 
-- BackEnd: [Laravel 7](https://laravel.com/)
+- BackEnd: [Laravel 8](https://laravel.com/)
 - FrontEnd: [Vue](https://vuejs.org) + [VueRouter](https://router.vuejs.org) + [Vuex](https://vuex.vuejs.org) + [VueI18n](https://kazupon.github.io/vue-i18n/)
 - Login using [JWT](https://jwt.io/) with [Vue-Auth](https://websanova.com/docs/vue-auth/home), [Axios](https://github.com/mzabriskie/axios) and [JWT-Auth](https://github.com/tymondesigns/jwt-auth).
 - The api routes, are separate for each module, in **Modules/{ModuleName}/routes_api.php**
