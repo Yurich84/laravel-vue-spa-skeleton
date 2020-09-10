@@ -16,7 +16,7 @@ class DummySingularTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = factory(User::class)->create();
+        $this->user = User::factory()->create();
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class DummySingularTest extends TestCase
     /** @test */
     public function update_dummyVariableSingular()
     {
-        $dummyVariableSingular = factory(DummySingular::class)->create();
+        $dummyVariableSingular = DummySingular::factory()->create();
 
         $this->actingAs($this->user)
             ->putJson(route('dummyVariablePlural.update', $dummyVariableSingular->id), [
@@ -55,7 +55,7 @@ class DummySingularTest extends TestCase
     /** @test */
     public function show_dummyVariableSingular()
     {
-        $dummyVariableSingular = factory(DummySingular::class)->create();
+        $dummyVariableSingular = DummySingular::factory()->create();
 
         $this->actingAs($this->user)
             ->getJson(route('dummyVariablePlural.show', $dummyVariableSingular->id))
@@ -70,7 +70,7 @@ class DummySingularTest extends TestCase
     /** @test */
     public function list_dummyVariableSingular()
     {
-        $dummyVariablePlural = factory(DummySingular::class, 2)->create()->map(function ($dummyVariableSingular) {
+        $dummyVariablePlural = DummySingular::factory()->count(2)->create()->map(function ($dummyVariableSingular) {
             return $dummyVariableSingular->only(['id', 'name']);
         });
 
@@ -92,7 +92,7 @@ class DummySingularTest extends TestCase
     /** @test */
     public function delete_dummyVariableSingular()
     {
-        $dummyVariableSingular = factory(DummySingular::class)->create([
+        $dummyVariableSingular = DummySingular::factory()->create([
             'name' => 'DummySingular for delete',
         ]);
 

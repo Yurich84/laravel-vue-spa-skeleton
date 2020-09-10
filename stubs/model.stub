@@ -2,10 +2,13 @@
 
 namespace {{ namespace }};
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class {{ class }} extends Model
 {
+    use HasFactory;
+
     const COLUMN_ID             = 'id';
     const COLUMN_NAME           = 'name';
 

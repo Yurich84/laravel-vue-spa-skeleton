@@ -21,16 +21,6 @@ class MakeModuleCommand extends Command
     protected $files;
 
     /**
-     * @var MakeBackEndModule
-     */
-    protected $backEndModule;
-
-    /**
-     * @var MakeFrontEndModule
-     */
-    protected $frontEndModule;
-
-    /**
      * The name and signature of the console command.
      *
      * @var string
@@ -93,7 +83,7 @@ class MakeModuleCommand extends Command
     protected function createModel()
     {
         $this->call('make:model', [
-            'name' => "Models\\{$this->module}"
+            'name' => $this->module
         ]);
     }
 
@@ -125,7 +115,7 @@ class MakeModuleCommand extends Command
     {
         $this->call("make:factory", [
             'name' => $this->module . 'Factory',
-            '--model' => "Models\\{$this->module}"
+            '--model' => "$this->module"
         ]);
     }
 
