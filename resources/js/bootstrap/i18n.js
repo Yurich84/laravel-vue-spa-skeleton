@@ -6,7 +6,7 @@ import {changeMomentLocale} from "./moment";
 
 Vue.use(VueI18n)
 
-const DEFAULT_LANGUAGE = 'ru'
+const DEFAULT_LANGUAGE = 'en'
 
 changeMomentLocale(DEFAULT_LANGUAGE)
 
