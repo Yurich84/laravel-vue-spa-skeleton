@@ -22,7 +22,7 @@ class SettingsTest extends TestCase
     public function update_profile_info()
     {
         $this->actingAs($this->user)
-            ->patchJson(self::PATH_PREFIX . 'settings/profile', [
+            ->patchJson(route('profile.update'), [
                 'name' => 'Test User',
                 'email' => 'test@test.app',
             ])

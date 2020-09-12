@@ -20,7 +20,7 @@ class LoginTest extends TestCase
     /** @test */
     public function authenticate()
     {
-        $this->postJson(self::PATH_PREFIX . 'auth/login', [
+        $this->postJson(route('login'), [
             'email' => $this->user->email,
             'password' => 'password',
         ])
@@ -34,7 +34,7 @@ class LoginTest extends TestCase
     public function fetch_the_current_user()
     {
         $this->actingAs($this->user)
-            ->postJson(self::PATH_PREFIX . 'auth/me')
+            ->postJson(route('me'))
             ->assertSuccessful()
             ->assertJsonPath('data.email', $this->user->email);
     }
@@ -42,15 +42,15 @@ class LoginTest extends TestCase
     /** @test */
     public function log_out()
     {
-        $token = $this->postJson(self::PATH_PREFIX . 'auth/login', [
+        $token = $this->postJson(route('login'), [
             'email' => $this->user->email,
             'password' => 'password',
         ])->json()['token'];
 
-        $this->postJson(self::PATH_PREFIX . "auth/logout?token=$token")
+        $this->postJson(route('logout', ['token' => $token]))
             ->assertSuccessful();
 
-        $this->postJson(self::PATH_PREFIX . 'auth/me')
+        $this->postJson(route('me'))
             ->assertStatus(401);
     }
 }

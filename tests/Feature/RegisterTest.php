@@ -11,7 +11,7 @@ class RegisterTest extends TestCase
     /** @test */
     public function can_register()
     {
-        $response = $this->postJson(self::PATH_PREFIX . 'auth/register', [
+        $response = $this->postJson(route('register'), [
             'name' => 'Test User',
             'email' => 'test@test.app',
             'password' => 'secret',
@@ -32,7 +32,7 @@ class RegisterTest extends TestCase
     {
         User::factory()->create(['email' => 'test@test.app']);
 
-        $this->postJson(self::PATH_PREFIX . 'auth/register', [
+        $this->postJson(route('register'), [
             'name' => 'Test User',
             'email' => 'test@test.app',
             'password' => 'secret',
