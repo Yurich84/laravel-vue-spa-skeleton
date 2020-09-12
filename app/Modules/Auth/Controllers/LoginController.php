@@ -100,14 +100,4 @@ class LoginController extends Controller
         $this->guard()->logout();
     }
 
-
-    /**
-     * Refresh a token.
-     *
-     * @return JsonResponse
-     */
-    public function refresh()
-    {
-        return $this->guard()->refresh();
-    }
 }
