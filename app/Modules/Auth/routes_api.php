@@ -13,7 +13,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('email/verify/{user}', 'VerificationController@verify')->name('verification.verify');
     Route::post('email/resend', 'VerificationController@resend')->name('verification.resend');
 
-    Route::group(['middleware' => 'auth:api'], function () {
+    Route::group(['middleware' => 'jwt'], function () {
         Route::post('logout', 'LoginController@logout')->name('logout');
         Route::post('me', 'UserController@me')->name('me');
     });
