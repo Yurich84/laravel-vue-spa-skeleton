@@ -25,12 +25,12 @@ axios.interceptors.response.use(response => response, error => {
 })
 
 Vue.use(VueAuth, {
-    auth:           require('@websanova/vue-auth/drivers/auth/bearer.js'),
-    http:           require('@websanova/vue-auth/drivers/http/axios.1.x.js'),
-    router:         require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
-    loginData:      { url: process.env.MIX_API_ENDPOINT + 'auth/login' },
-    logoutData:     { url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: '/login' },
-    registerData:   { url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST'},
+    auth:           require('@websanova/vue-auth/dist/drivers/auth/bearer.js'),
+    http:           require('@websanova/vue-auth/dist/drivers/http/axios.1.x.js'),
+    router:         require('@websanova/vue-auth/dist/drivers/router/vue-router.2.x.js'),
+    loginData:      { url: process.env.MIX_API_ENDPOINT + 'auth/login', redirect: '/admin/' },
+    logoutData:     { url: process.env.MIX_API_ENDPOINT + 'auth/logout', redirect: '/login', makeRequest: true },
+    registerData:   { url: process.env.MIX_API_ENDPOINT + 'auth/register', method: 'POST', redirect: '/login' },
     fetchData:      { url: process.env.MIX_API_ENDPOINT + 'auth/me', method: 'POST' },
     refreshData:    { enabled: false },
 });

@@ -18,19 +18,18 @@
         },
         methods: {
             onSubmit(loginData) {
-                const self = this;
-                this.$auth.login({
-                    data: loginData,
-                    redirect: {name: 'Dashboard'},
-                    success: response => {
-                        self.loading = false;
-                    },
-                    error: error => {
+                this.loading = true
+                this.$auth
+                    .login({
+                        data: loginData,
+                    })
+                    .then(() => {
+                        // success
+                    }, error => {
                         if (error.response.status === 422)
                             this.authErrors = error.response.data.errors
-                        self.loading = false;
-                    },
-                })
+                    })
+                    .finally(() => this.loading = false);
             }
         }
     }

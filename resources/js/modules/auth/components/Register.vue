@@ -20,27 +20,22 @@
         },
         methods: {
             onSubmit(signUpFormData) {
-                const self = this;
-                this.loading = true;
-                this.$auth.register({
-                    data: signUpFormData,
-                    redirect: {name: ROUTE_LOGIN},
-                    success: function (response) {
-                        self.loading = false;
+                this.$auth
+                    .register({
+                        data: signUpFormData,
+                    })
+                    .then(response => {
                         if(response.data.status) {
                             this.$message.success(response.data.status)
                         } else {
                             this.$message.success(this.$t('auth.register.success'))
                         }
-                    },
-                    error: function (error) {
+                    }, error => {
                         if (error.response.status === 422)
                             this.authErrors = error.response.data.errors
-                        self.loading = false
-                    },
-                })
+                    })
+                    .finally(() => this.loading = false);;
             },
-
         }
     }
 </script>

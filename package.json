@@ -12,7 +12,7 @@
     "devDependencies": {},
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.14.0",
-        "@websanova/vue-auth": "^2.21.14-beta",
+        "@websanova/vue-auth": "3.3.1",
         "axios": "^0.19.2",
         "bootstrap": "4.5.2",
         "cross-env": "^7.0.2",

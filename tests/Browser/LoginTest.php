@@ -19,21 +19,12 @@ class LoginTest extends DuskTestCase
             $browser->visit(new Login)
                 ->submit($user->email, 'password')
                 ->assertPageIs(Admin::class);
-        });
-    }
 
-    /** @test */
-    public function log_out_the_user()
-    {
-        $user = User::factory()->create();
-
-        $this->browse(function ($browser) use ($user) {
-            $browser->visit(new Login)
-                ->submit($user->email, 'password')
-                ->visit(new Admin)
+            $browser->visit(new Admin)
                 ->clickLogout()
                 ->assertPageIs(Login::class);
         });
+
     }
 
 
