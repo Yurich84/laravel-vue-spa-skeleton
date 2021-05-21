@@ -41,7 +41,7 @@ The main goals of the project are:
 - `php artisan key:generate`
 - `php artisan jwt:secret --force`
 - `php artisan migrate`
-- `npm install`
+- `yarn install`
 
 ## Usage
 - `npm run watch` or `npm run hot` - for hot reloading
