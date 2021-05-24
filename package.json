@@ -19,7 +19,7 @@
         "element-ui": "2.13.2",
         "jquery": "3.5.1",
         "laravel-mix": "^5.0.4",
-        "lodash": "4.17.20",
+        "lodash": "4.17.21",
         "moment": "2.27.0",
         "popper.js": "^1.16.1",
         "resolve-url-loader": "3.1.1",
