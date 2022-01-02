@@ -21,6 +21,7 @@ class LoginTest extends DuskTestCase
                 ->assertPageIs(Admin::class);
 
             $browser->visit(new Admin)
+                ->waitForText('Dashboard')
                 ->clickLogout()
                 ->assertPageIs(Login::class);
         });

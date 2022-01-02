@@ -43,6 +43,16 @@ The main goals of the project are:
 - `php artisan migrate`
 - `yarn install`
 
+## Testing
+
+### Unit Testing
+`php artisan test`
+
+### Browser Testing
+[Laravel Dusk](https://laravel.com/docs/8.x/dusk)
+- install chrome driver: `php artisan dusk:chrome-driver {chrome version} `
+- run: `php artisan dusk`
+
 ## Usage
 - `npm run watch` or `npm run hot` - for hot reloading
 - `php artisan serve` and go [127.0.0.1:8000](http://127.0.0.1:8000)

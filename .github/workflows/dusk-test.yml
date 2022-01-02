@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: nanasess/setup-php@master
         with:
-          php-version: '7.3'
+          php-version: '8.0'
       - name: Prepare The Environment
         run: cp .env.example .env
       - name: Download Node Dependencies

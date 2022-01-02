@@ -31,9 +31,9 @@
         methods: {
             ...mapMutations([TOGGLE_COLLAPSE]),
             logout: function () {
-                this.$confirm(this.$t('auth.logout_confirm.text'), this.$t('auth.logout_confirm.title'), {
-                    confirmButtonText: this.$t('auth.logout_confirm.button_ok'),
-                    cancelButtonText: this.$t('auth.logout_confirm.button_cancel'),
+                this.$confirm(this.$t('auth.logout_confirm.text').toString(), this.$t('auth.logout_confirm.title').toString(), {
+                    confirmButtonText: this.$t('auth.logout_confirm.button_ok').toString(),
+                    cancelButtonText: this.$t('auth.logout_confirm.button_cancel').toString(),
                 }).then(() => {
                     this.$auth.logout()
                 })
@@ -54,7 +54,3 @@
         }
     }
 </script>
-
-<style scoped type="scss">
-
-</style>
