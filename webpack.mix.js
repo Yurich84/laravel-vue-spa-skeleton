@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const config = require('./webpack.config')
 
 /*
  |--------------------------------------------------------------------------
@@ -12,12 +13,30 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .sass('resources/sass/app.scss', 'public/css')
+    .vue({ version: 2 });
 
-mix.webpackConfig({
-    output: {
-        chunkFilename: 'js/chunks/[name].js',
-    },
-});
+mix.autoload({
+    lodash: ['_'],
+})
 
-mix.sourceMaps();
+if (mix.inProduction()) {
+    mix.version()
+} else {
+    mix.sourceMaps(true, 'source-map')
+}
+
+mix.options({
+    fileLoaderDirs: {
+        images: 'images/compiled',
+        fonts: 'fonts'
+    }
+})
+
+if (process.env.sync) {
+    mix.browserSync({
+        proxy: '127.0.0.1:8000'
+    })
+}
+
+mix.webpackConfig(config)
