@@ -22,7 +22,6 @@
         "brianium/paratest": "^6.4",
         "facade/ignition": "^2.17",
         "fakerphp/faker": "^1.9.1",
-        "laravel/dusk": "^v6.19",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.5"
