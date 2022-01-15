@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\PersonalAccessToken;
 use App\Models\User;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class LoginTest extends TestCase
@@ -20,14 +22,28 @@ class LoginTest extends TestCase
     /** @test */
     public function authenticate()
     {
-        $this->postJson(route('login'), [
+        $response = $this->postJson(route('login'), [
             'email' => $this->user->email,
             'password' => 'password',
-        ])
-        ->assertSuccessful()
-        ->assertJsonStructure(['token', 'expires_in'])
-        ->assertJson(['token_type' => 'bearer'])
-        ->assertHeader('Authorization');
+            'device_name' => 'spa',
+        ]);
+
+        $token = $response->json()['token'];
+
+        $response
+            ->assertSuccessful()
+            ->assertJson(['token' => $token])
+            ->assertHeader('Authorization');
+
+        $this->withToken($token)
+            ->postJson(route('me'))
+            ->assertSuccessful();
+
+        $this->assertDatabaseHas(PersonalAccessToken::TABLE_NAME, [
+            PersonalAccessToken::COLUMN_NAME => 'spa',
+            PersonalAccessToken::COLUMN_TOKENABLE_ID => $this->user->id,
+            PersonalAccessToken::COLUMN_TOKENABLE_TYPE => User::class,
+        ]);
     }
 
     /** @test */
@@ -42,15 +58,28 @@ class LoginTest extends TestCase
     /** @test */
     public function log_out()
     {
-        $token = $this->postJson(route('login'), [
+        Config::set('auth.defaults.guard', 'api');
+
+        $response = $this->postJson(route('login'), [
             'email' => $this->user->email,
             'password' => 'password',
-        ])->json()['token'];
+            'device_name' => 'spa',
+        ]);
 
-        $this->postJson(route('logout', ['token' => $token]))
-            ->assertSuccessful();
+        $token = $response->json()['token'];
 
-        $this->postJson(route('me'))
+        $this->withToken($token)
+            ->postJson(route('logout'))
+            ->assertOk();
+
+        $this->assertDatabaseMissing(PersonalAccessToken::TABLE_NAME, [
+            PersonalAccessToken::COLUMN_NAME => 'spa',
+            PersonalAccessToken::COLUMN_TOKENABLE_ID => $this->user->id,
+            PersonalAccessToken::COLUMN_TOKENABLE_TYPE => User::class,
+        ]);
+
+        $this->withToken($token)
+            ->postJson(route('me'))
             ->assertStatus(401);
     }
 }

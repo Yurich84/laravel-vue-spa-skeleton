@@ -4,7 +4,7 @@
 <img height="80" src="https://cdn.worldvectorlogo.com/logos/element-ui-1.svg">
 </p>
 
-#### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI, Bootstrap. 
+#### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI. 
 #### CRUD generator is integrated in project creates standalone modules on the frontend and backend.
 
 <p align="center">
@@ -24,13 +24,12 @@ The main goals of the project are:
 
 - BackEnd: [Laravel 8](https://laravel.com/)
 - FrontEnd: [Vue](https://vuejs.org) + [VueRouter](https://router.vuejs.org) + [Vuex](https://vuex.vuejs.org) + [VueI18n](https://kazupon.github.io/vue-i18n/)
-- Login using [JWT](https://jwt.io/) with [Vue-Auth](https://websanova.com/docs/vue-auth/home), [Axios](https://github.com/mzabriskie/axios) and [JWT-Auth](https://github.com/tymondesigns/jwt-auth).
+- Login using [JWT](https://jwt.io/) with [Vue-Auth](https://websanova.com/docs/vue-auth/home), [Axios](https://github.com/mzabriskie/axios) and [Sanctum](https://laravel.com/docs/8.x/sanctum).
 - The api routes, are separate for each module, in **Modules/{ModuleName}/routes_api.php**
 - [ElementUI](http://element.eleme.io/) UI Kit 
 - [Lodash](https://lodash.com) js utilities
 - [Moment](https://momentjs.com) time manipulations
 - [FontAwesome 5](http://fontawesome.io/icons/) icons
-- [Bootstrap 4](https://getbootstrap.com) css
 
 ## Install
 - `git clone https://github.com/Yurich84/laravel-vue-spa-skeleton.git`
@@ -39,7 +38,6 @@ The main goals of the project are:
 - `cp .env.example .env` - copy .env file
 - set your DB credentials in `.env`
 - `php artisan key:generate`
-- `php artisan jwt:secret --force`
 - `php artisan migrate`
 - `yarn install`
 
@@ -47,11 +45,6 @@ The main goals of the project are:
 
 ### Unit Testing
 `php artisan test`
-
-### Browser Testing
-[Laravel Dusk](https://laravel.com/docs/8.x/dusk)
-- install chrome driver: `php artisan dusk:chrome-driver {chrome version} `
-- run: `php artisan dusk`
 
 ## Usage
 - `npm run watch` or `npm run hot` - for hot reloading

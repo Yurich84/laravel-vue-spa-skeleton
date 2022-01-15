@@ -121,7 +121,7 @@ class RouteServiceProvider extends ServiceProvider
 
             if (file_exists($routesPath)) {
                 Route::prefix(self::API_PREFIX)
-                    ->middleware('api')
+                    ->middleware(['api', 'auth:sanctum'])
                     ->namespace("\\App\\Modules\\$module\Controllers")
                     ->group($routesPath);
             }

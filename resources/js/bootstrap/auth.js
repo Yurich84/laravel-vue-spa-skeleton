@@ -23,6 +23,8 @@ axios.interceptors.response.use(response => response, error => {
     }
     if (error.response.status >= 500) {
         Message.error(i18n.t('global.unknown_server_error').toString())
+    } else if (error.response.data.message) {
+        Message.error(error.response.data.message)
     }
 
     return Promise.reject(error)

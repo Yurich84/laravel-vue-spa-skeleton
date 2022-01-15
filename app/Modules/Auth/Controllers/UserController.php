@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function me()
     {
-        return response()->json(array(
+        return response()->json([
             'data' => auth()->user()
-        ));
+        ]);
     }
 }

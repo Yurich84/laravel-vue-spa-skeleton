@@ -81,10 +81,6 @@
 
 <style lang="scss">
 
-    .el-form-item__label {
-        padding: 0 !important;
-    }
-
     .sign-up-form {
 
         .el-form-item {

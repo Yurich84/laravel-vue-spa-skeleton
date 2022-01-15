@@ -14,9 +14,9 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.77",
+        "laravel/sanctum": "^2.14",
         "laravel/tinker": "^v2.4.2",
-        "laravel/ui": "^3.3",
-        "tymon/jwt-auth": "^1.0"
+        "laravel/ui": "^3.3"
     },
     "require-dev": {
         "brianium/paratest": "^6.4",
@@ -59,8 +59,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
-            "@php artisan key:generate --ansi",
-            "@php artisan jwt:secret --force --ansi"
+            "@php artisan key:generate --ansi"
         ],
         "clear-all": [
             "@php artisan clear-compiled",

@@ -4,15 +4,19 @@ namespace App\Modules\Auth\Controllers;
 
 use App\Exceptions\VerifyEmailException;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
+
+    protected string $token;
 
     /**
      * Create a new controller instance.
@@ -21,7 +25,12 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout', 'refresh');
+        $this->middleware('guest')->except('logout');
+    }
+
+    protected function setToken(string $token): void
+    {
+        $this->token = $token;
     }
 
     /**
@@ -32,18 +41,19 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $token = $this->guard()->attempt($this->credentials($request));
+        $user = User::where('email', strtolower($request->input($this->username())))->first();
 
-        if (! $token) {
+        if (! $user || ! Hash::check($request->password, $user->password)) {
             return false;
         }
 
-        $user = $this->guard()->user();
+        $this->guard()->setUser($user);
+
         if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
             return false;
         }
 
-        $this->guard()->setToken($token);
+        $this->setToken($user->createToken($request->device_name)->plainTextToken);
 
         return true;
     }
@@ -58,14 +68,9 @@ class LoginController extends Controller
     {
         $this->clearLoginAttempts($request);
 
-        $token = (string) $this->guard()->getToken();
-        $expiration = $this->guard()->getPayload()->get('exp');
-
         return response()->json([
-            'token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => $expiration - time(),
-        ])->header('Authorization', $token);
+            'token' => $this->token,
+        ])->header('Authorization', $this->token);
     }
 
     /**
@@ -97,7 +102,23 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        $this->guard()->logout();
+        $request->user()->currentAccessToken()->delete();
+        app()->get('auth')->forgetGuards();
+        auth('web')->logout();
     }
 
+    /**
+     * Validate the user login request.
+     *
+     * @param Request $request
+     * @return void
+     */
+    protected function validateLogin(Request $request): void
+    {
+        $request->validate([
+           $this->username() => 'required|string',
+           'password' => 'required|string',
+           'device_name' => 'required|string',
+       ]);
+    }
 }

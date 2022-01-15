@@ -8,12 +8,13 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
+use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
+class User extends Authenticatable // implements MustVerifyEmail
 {
-    use HasFactory;
-    use Notifiable;
+    use HasFactory,
+        Notifiable,
+        HasApiTokens;
 
     const COLUMN_ID = 'id';
     const COLUMN_NAME = 'name';
@@ -27,10 +28,8 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
      *
      * @var array
      */
-    protected $fillable = [
-        self::COLUMN_NAME,
-        self::COLUMN_EMAIL,
-        self::COLUMN_PASSWORD,
+    protected $guarded = [
+        self::COLUMN_ID,
     ];
 
     /**
@@ -89,25 +88,5 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail);
-    }
-
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims()
-    {
-        return [];
     }
 }

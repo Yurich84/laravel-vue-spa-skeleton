@@ -12,6 +12,7 @@
         <script>
             window.config = @json([
                 'appName' => config('app.name'),
+                'deviceName' => 'spa'
             ])
         </script>
         <script src="{{ asset("js/app.js") }}" charset="utf-8"></script>

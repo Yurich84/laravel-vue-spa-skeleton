@@ -42,7 +42,8 @@
             return {
                 form: {
                     email: '',
-                    password: ''
+                    password: '',
+                    device_name: this.config.deviceName
                 },
                 rules: {
                     email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.email_label')}), trigger: 'blur'}],
