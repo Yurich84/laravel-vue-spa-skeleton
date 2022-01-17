@@ -4,6 +4,10 @@
 <img height="80" src="https://cdn.worldvectorlogo.com/logos/element-ui-1.svg">
 </p>
 
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Yurich84/laravel-vue-spa-skeleton/Laravel?label=tests)
+![GitHub all releases](https://img.shields.io/github/downloads/Yurich84/laravel-vue-spa-skeleton/total)
+
 #### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI. 
 #### CRUD generator is integrated in project creates standalone modules on the frontend and backend.
 
@@ -110,5 +114,3 @@ This will create:
 Every module loads dynamically.
 
 ## [Video](https://www.youtube.com/watch?v=0qKNlrmhgNg)
-
-[open-source MIT license](https://opensource.org/licenses/MIT).
