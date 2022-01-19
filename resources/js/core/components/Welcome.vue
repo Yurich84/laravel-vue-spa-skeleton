@@ -1,5 +1,8 @@
 <template>
-    <main role="main" class="container flex-center position-ref full-height">
+    <main
+        role="main"
+        class="container flex-center position-ref full-height"
+    >
         <div class="top-right links">
             <template v-if="$auth.check()">
                 <router-link :to="{ name: 'Dashboard' }">
@@ -16,16 +19,16 @@
             </template>
         </div>
         <div class="text-center content">
-            <router-view :key="$route.fullPath"></router-view>
+            <router-view :key="$route.fullPath" />
         </div>
     </main>
 </template>
 
 <script>
 
-    export default {
+export default {
 
-    }
+}
 </script>
 
 <style lang="scss" scoped>

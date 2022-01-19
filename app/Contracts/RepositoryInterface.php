@@ -5,12 +5,10 @@ namespace App\Contracts;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Interface RepositoryInterface
- * @package App\Contracts
+ * Interface RepositoryInterface.
  */
 interface RepositoryInterface
 {
-
     /**
      * @param int $id
      * @return Model|null
@@ -35,5 +33,4 @@ interface RepositoryInterface
      * @return bool
      */
     public function delete(int $id): bool;
-
 }

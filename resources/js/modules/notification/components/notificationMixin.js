@@ -23,19 +23,19 @@ export default {
         ]),
         showMessage(message) {
             switch (message.type) {
-                case notificationTypes.ERROR_MESSAGE:
-                    this.$message.error(message.message)
-                    break
-                case notificationTypes.WARNING_MESSAGE:
-                case notificationTypes.SUCCESS_MESSAGE:
-                    this.$message({
-                        ...message
-                    })
-                    break
-                case notificationTypes.COMMON_MESSAGE:
-                    this.$notify({
-                        ...message.message
-                    })
+            case notificationTypes.ERROR_MESSAGE:
+                this.$message.error(message.message)
+                break
+            case notificationTypes.WARNING_MESSAGE:
+            case notificationTypes.SUCCESS_MESSAGE:
+                this.$message({
+                    ...message
+                })
+                break
+            case notificationTypes.COMMON_MESSAGE:
+                this.$notify({
+                    ...message.message
+                })
 
             }
         }

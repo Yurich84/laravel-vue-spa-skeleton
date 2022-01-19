@@ -2,7 +2,7 @@ import * as types from './types'
 
 let collapsed = false
 if (window.innerWidth < 768) {
-    collapsed = true;
+    collapsed = true
 }
 
 export const store = {

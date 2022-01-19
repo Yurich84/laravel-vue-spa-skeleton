@@ -115,7 +115,7 @@ class MakeFrontEndModule extends MakeModuleCommand
      */
     private function createStore()
     {
-        $path = $this->module_path."/store/store.js";
+        $path = $this->module_path.'/store/store.js';
 
         if ($this->alreadyExists($path)) {
             $this->error('Store already exists!');
@@ -136,7 +136,7 @@ class MakeFrontEndModule extends MakeModuleCommand
      */
     private function createStoreTypes()
     {
-        $path = $this->module_path."/store/types.js";
+        $path = $this->module_path.'/store/types.js';
 
         if ($this->alreadyExists($path)) {
             $this->error('Types already exists!');
@@ -157,7 +157,7 @@ class MakeFrontEndModule extends MakeModuleCommand
      */
     private function createStoreActions()
     {
-        $path = $this->module_path."/store/actions.js";
+        $path = $this->module_path.'/store/actions.js';
 
         if ($this->alreadyExists($path)) {
             $this->error('Actions already exists!');
@@ -178,7 +178,7 @@ class MakeFrontEndModule extends MakeModuleCommand
      */
     private function createRoutes()
     {
-        $path = $this->module_path."/routes.js";
+        $path = $this->module_path.'/routes.js';
 
         if ($this->alreadyExists($path)) {
             $this->error('Vue Routes already exists!');
@@ -199,7 +199,7 @@ class MakeFrontEndModule extends MakeModuleCommand
      */
     private function createApi()
     {
-        $path = $this->module_path."/api/index.js";
+        $path = $this->module_path.'/api/index.js';
 
         if ($this->alreadyExists($path)) {
             $this->error('Api file already exists!');
@@ -211,5 +211,4 @@ class MakeFrontEndModule extends MakeModuleCommand
             $this->info('Api file created successfully.');
         }
     }
-
 }

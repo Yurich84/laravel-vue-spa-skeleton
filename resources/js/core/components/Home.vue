@@ -1,18 +1,35 @@
 <template>
-    <el-row class="home-container" v-if="$auth.ready()">
-        <navbar></navbar>
-        <el-col :span="24" class="main">
-            <sidebar></sidebar>
+    <el-row
+        v-if="$auth.ready()"
+        class="home-container"
+    >
+        <navbar />
+        <el-col
+            :span="24"
+            class="main"
+        >
+            <sidebar />
             <section class="content-container">
                 <div class="grid-content bg-purple-light">
-                    <el-col :span="24" class="breadcrumb-container">
-                        <breadcrumbs></breadcrumbs>
+                    <el-col
+                        :span="24"
+                        class="breadcrumb-container"
+                    >
+                        <breadcrumbs />
                     </el-col>
-                    <el-col :span="24" class="content-wrapper">
+                    <el-col
+                        :span="24"
+                        class="content-wrapper"
+                    >
                         <el-card shadow="always">
-                            <h1 class="title text-center">{{ $t($route.name) }}</h1>
-                            <transition name="fade" mode="out-in">
-                                <router-view :key="$route.fullPath"></router-view>
+                            <h1 class="title text-center">
+                                {{ $t($route.name) }}
+                            </h1>
+                            <transition
+                                name="fade"
+                                mode="out-in"
+                            >
+                                <router-view :key="$route.fullPath" />
                             </transition>
                         </el-card>
                     </el-col>
@@ -26,12 +43,12 @@
 </template>
 
 <script>
-    import Navbar from "./Navbar";
-    import Sidebar from "./Sidebar";
-    import Breadcrumbs from "./Breadcrumbs";
-    export default {
-        components: {Breadcrumbs, Sidebar, Navbar},
-    }
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
+import Breadcrumbs from './Breadcrumbs'
+export default {
+    components: {Breadcrumbs, Sidebar, Navbar},
+}
 
 </script>
 

@@ -1,19 +1,19 @@
 <template>
     <section id="profile">
-        <ProfileForm/>
+        <ProfileForm />
     </section>
 </template>
 
 <script>
-    import ProfileForm from "./ProfileForm";
+import ProfileForm from './ProfileForm'
 
-    export default {
-        name: "Profile",
-        components: {ProfileForm},
-        data: () => ({
+export default {
+    name: 'Profile',
+    components: {ProfileForm},
+    data: () => ({
 
-        }),
-    }
+    }),
+}
 </script>
 
 <style lang="scss" scoped>

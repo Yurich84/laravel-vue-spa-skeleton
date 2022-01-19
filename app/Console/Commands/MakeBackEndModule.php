@@ -8,7 +8,6 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class MakeBackEndModule extends MakeModuleCommand
 {
-
     /**
      * MakeBackEndModule constructor.
      */
@@ -38,7 +37,6 @@ class MakeBackEndModule extends MakeModuleCommand
         $this->createResource();
     }
 
-
     /**
      * Create a controller for the module.
      *
@@ -60,14 +58,13 @@ class MakeBackEndModule extends MakeModuleCommand
         }
     }
 
-
     /**
      * Create a Routes for the module.
      *
      * @throws FileNotFoundException
      */
     private function createRoutes() {
-        $path = $this->module_path."/routes_api.php";
+        $path = $this->module_path.'/routes_api.php';
 
         if ($this->alreadyExists($path)) {
             $this->error('Routes already exists!');
@@ -119,5 +116,4 @@ class MakeBackEndModule extends MakeModuleCommand
             $this->info('Resource created successfully.');
         }
     }
-
 }

@@ -12,11 +12,10 @@ use Illuminate\Support\Stringable;
 
 class MakeModuleCommand extends Command
 {
-
     /**
      * The filesystem instance.
      *
-     * @var Filesystem $files
+     * @var Filesystem
      */
     protected $files;
 
@@ -74,7 +73,6 @@ class MakeModuleCommand extends Command
 
     }
 
-
     /**
      * Create a model file for the module.
      *
@@ -83,7 +81,7 @@ class MakeModuleCommand extends Command
     protected function createModel()
     {
         $this->call('make:model', [
-            'name' => $this->module
+            'name' => $this->module,
         ]);
     }
 
@@ -113,9 +111,9 @@ class MakeModuleCommand extends Command
      */
     protected function createFactory()
     {
-        $this->call("make:factory", [
-            'name' => $this->module . 'Factory',
-            '--model' => "$this->module"
+        $this->call('make:factory', [
+            'name' => $this->module.'Factory',
+            '--model' => "$this->module",
         ]);
     }
 
@@ -127,7 +125,7 @@ class MakeModuleCommand extends Command
      */
     protected function createTest()
     {
-        $path = base_path('tests/Feature/' . $this->module . 'Test.php');
+        $path = base_path('tests/Feature/'.$this->module.'Test.php');
 
         if ($this->alreadyExists($path)) {
             $this->error('Test file already exists!');
@@ -192,7 +190,7 @@ class MakeModuleCommand extends Command
             $this->module->plural()->snake()->upper(),
             lcfirst($this->module),
             lcfirst($this->module->pluralStudly()),
-            lcfirst($this->module->plural()->snake('-'))
+            lcfirst($this->module->plural()->snake('-')),
         ],
             $stub
         );

@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     const RESPONSE_TYPE_SUCCESS = 'success';
-    const RESPONSE_TYPE_INFO    = 'info';
+    const RESPONSE_TYPE_INFO = 'info';
     const RESPONSE_TYPE_WARNING = 'warning';
-    const RESPONSE_TYPE_ERROR   = 'error';
+    const RESPONSE_TYPE_ERROR = 'error';
 }

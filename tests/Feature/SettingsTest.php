@@ -35,5 +35,4 @@ class SettingsTest extends TestCase
             'email' => 'test@test.app',
         ]);
     }
-
 }

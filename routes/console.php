@@ -1,9 +1,5 @@
 <?php
 
-use \Maatwebsite\Excel\Facades\Excel;
-use \App\Imports\BrandsImport;
-use \App\Models\Brand;
-
 /*
 |--------------------------------------------------------------------------
 | Console Routes
@@ -14,4 +10,3 @@ use \App\Models\Brand;
 | simple approach to interacting with each command's IO methods.
 |
 */
-

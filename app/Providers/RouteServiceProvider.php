@@ -88,7 +88,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * All non matchable resources we will show standard Vue page,
+     * All non matchable resources we will show standard Vue page,.
      *
      * and redirect it through VueRoutes on client side
      *
@@ -117,7 +117,7 @@ class RouteServiceProvider extends ServiceProvider
         $modules = $this->getModulesList($modules_folder);
 
         foreach ($modules as $module) {
-            $routesPath   = $modules_folder . DIRECTORY_SEPARATOR . $module . DIRECTORY_SEPARATOR . 'routes_api.php';
+            $routesPath = $modules_folder.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.'routes_api.php';
 
             if (file_exists($routesPath)) {
                 Route::prefix(self::API_PREFIX)
@@ -138,8 +138,8 @@ class RouteServiceProvider extends ServiceProvider
             array_values(
                 array_filter(
                     scandir($modules_folder),
-                    function ($item) use($modules_folder) {
-                        return is_dir($modules_folder . DIRECTORY_SEPARATOR . $item) && !in_array($item, [".",".."]);
+                    function ($item) use ($modules_folder) {
+                        return is_dir($modules_folder.DIRECTORY_SEPARATOR.$item) && ! in_array($item, ['.', '..']);
                     }
                 )
             );

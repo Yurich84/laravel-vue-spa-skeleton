@@ -1,16 +1,14 @@
 <template>
-    <section id="dashboard">
-
-    </section>
+    <section id="dashboard" />
 </template>
 
 <script>
-    export default {
-        name: "Dashboard",
-        data: () => ({
+export default {
+    name: 'Dashboard',
+    data: () => ({
 
-        }),
-    }
+    }),
+}
 </script>
 
 <style lang="scss" scoped>

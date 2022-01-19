@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
-import {Message} from 'element-ui';
-import i18n, {setI18nLanguage} from '@/bootstrap/i18n';
+import {Message} from 'element-ui'
+import i18n, {setI18nLanguage} from '@/bootstrap/i18n'
 
 import VueAuth from '@websanova/vue-auth/dist/v2/vue-auth.esm'
 import driverAuthBearer from '@websanova/vue-auth/dist/drivers/auth/bearer.esm.js'
@@ -11,10 +11,10 @@ import driverRouterVueRouter from '@websanova/vue-auth/dist/drivers/router/vue-r
 
 Vue.use(VueAxios, axios)
 let token = document.head.querySelector('meta[name="csrf-token"]')
-axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.baseURL = process.env.MIX_API_ENDPOINT
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
 
 // Response interceptor
 axios.interceptors.response.use(response => response, error => {

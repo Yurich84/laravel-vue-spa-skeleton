@@ -6,4 +6,4 @@ export const routes = [
         name: 'Profile',
         component: Profile,
     },
-];
+]

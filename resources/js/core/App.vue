@@ -19,11 +19,11 @@
 </template>
 
 <script>
-    import notificationMixin from '../modules/notification/components/notificationMixin'
-    export default {
-        name: 'App',
-        mixins: [notificationMixin]
-    }
+import notificationMixin from '../modules/notification/components/notificationMixin'
+export default {
+    name: 'App',
+    mixins: [notificationMixin]
+}
 </script>
 
 <style lang="scss">

@@ -22,9 +22,10 @@ class ProfileController extends Controller
 
         $data = $profileRequest->validated();
         $user->fill($data)->save();
+
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
-            'message' => 'Successfully updated'
+            'message' => 'Successfully updated',
         ]);
     }
 }

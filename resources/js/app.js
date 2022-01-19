@@ -12,7 +12,7 @@ Vue.use(ElementUI, {i18n: (key, value) => i18n.t(key, value)})
 
 Vue.prototype.config = window.config
 
-Vue.mixin(globalMixin);
+Vue.mixin(globalMixin)
 
 window.Vue = new Vue({
     router,

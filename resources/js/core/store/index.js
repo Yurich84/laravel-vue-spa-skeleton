@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {store as core} from "./store";
+import {store as core} from './store'
 
 Vue.use(Vuex)
 

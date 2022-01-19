@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import messages from './../includes/lang'
 import axios from 'axios'
-import {changeDayjsLocale} from "./day";
+import {changeDayjsLocale} from './day'
 
 Vue.use(VueI18n)
 

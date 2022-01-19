@@ -1,8 +1,8 @@
-import Index        from "./components/Index";
-import NotFound     from "./components/NotFound";
-import Welcome      from "./components/Welcome";
-import Home         from "./components/Home";
-import auth         from '../modules/auth/routes_auth';
+import Index        from './components/Index'
+import NotFound     from './components/NotFound'
+import Welcome      from './components/Welcome'
+import Home         from './components/Home'
+import auth         from '../modules/auth/routes_auth'
 
 // Load modules routes dynamically.
 const requireContext = require.context('../modules', true, /routes\.js$/)
@@ -12,7 +12,7 @@ const modules = requireContext.keys()
         [file.replace(/(^.\/)|(\.js$)/g, ''), requireContext(file)]
     )
 
-let moduleRoutes = [];
+let moduleRoutes = []
 
 for(let i in modules) {
     moduleRoutes = moduleRoutes.concat(modules[i][1].routes)
@@ -44,5 +44,5 @@ export const routes = [
             }
         ]
     },
-];
+]
 

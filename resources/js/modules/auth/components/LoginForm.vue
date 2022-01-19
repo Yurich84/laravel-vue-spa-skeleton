@@ -1,28 +1,42 @@
 <template>
-    <el-form @keyup.enter.native="onSubmit" :model="form" :rules="rules" ref="loginForm" label-width="120px">
-        <el-form-item prop="email"
-                      :label="$t('auth.login.email_label')"
-                      :error="$t(formErrors.get('email'))"
-                      class="form-group">
+    <el-form
+        ref="loginForm"
+        :model="form"
+        :rules="rules"
+        label-width="120px"
+        @keyup.enter.native="onSubmit"
+    >
+        <el-form-item
+            prop="email"
+            :label="$t('auth.login.email_label')"
+            :error="$t(formErrors.get('email'))"
+            class="form-group"
+        >
             <el-input
+                v-model="form.email"
                 name="email"
                 type="text"
-                v-model="form.email"
-            ></el-input>
+            />
         </el-form-item>
-        <el-form-item prop="password"
-                      :label="$t('auth.login.password_label')"
-                      :error="$t(formErrors.get('password'))"
-                      class="form-group">
+        <el-form-item
+            prop="password"
+            :label="$t('auth.login.password_label')"
+            :error="$t(formErrors.get('password'))"
+            class="form-group"
+        >
             <el-input
+                v-model="form.password"
                 name="password"
                 type="password"
-                v-model="form.password"
                 show-password
-            ></el-input>
+            />
         </el-form-item>
         <el-form-item style="width:100%;">
-            <el-button @click.native="onSubmit" :loading="loading" class="w-100">
+            <el-button
+                :loading="loading"
+                class="w-100"
+                @click.native="onSubmit"
+            >
                 {{ $t('auth.login.submit_button') }}
             </el-button>
         </el-form-item>
@@ -30,45 +44,51 @@
 </template>
 
 <script>
-    import {Errors} from "../../../includes/Errors";
+import {Errors} from '../../../includes/Errors'
 
-    export default {
-        name: 'LoginForm',
-        props: {
-            errors: Object,
-            loading: false
+export default {
+    name: 'LoginForm',
+    props: {
+        errors: {
+            type: Object,
+            default: null
         },
-        data() {
-            return {
-                form: {
-                    email: '',
-                    password: '',
-                    device_name: this.config.deviceName
-                },
-                rules: {
-                    email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.email_label')}), trigger: 'blur'}],
-                    password:   [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.password_label')}), trigger: 'blur'}],
-                },
-                formErrors: new Errors()
-            }
-        },
-        watch: {
-            errors: function () {
-                this.formErrors.record(this.errors);
-            }
-        },
-        methods: {
-            onSubmit(e) {
-                this.$refs['loginForm'].validate((valid) => {
-                    if (valid) {
-                        this.$emit('submit', {
-                            ...this.form
-                        })
-                    }
-                })
+        loading: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data() {
+        return {
+            form: {
+                email: '',
+                password: '',
+                device_name: this.config.deviceName
             },
+            rules: {
+                email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.email_label')}), trigger: 'blur'}],
+                password:   [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.password_label')}), trigger: 'blur'}],
+            },
+            formErrors: new Errors()
+        }
+    },
+    watch: {
+        errors: function () {
+            this.formErrors.record(this.errors)
+        }
+    },
+    methods: {
+        onSubmit(e) {
+            this.$refs['loginForm'].validate((valid) => {
+                if (valid) {
+                    this.$emit('submit', {
+                        ...this.form
+                    })
+                }
+            })
         },
-    }
+    },
+}
 </script>
 
 <style scoped lang="scss">

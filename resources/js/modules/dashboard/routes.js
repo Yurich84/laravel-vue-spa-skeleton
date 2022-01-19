@@ -1,4 +1,4 @@
-import Dashboard from "./components/Dashboard";
+import Dashboard from './components/Dashboard'
 
 export const routes = [
     {
@@ -7,4 +7,4 @@ export const routes = [
         component: Dashboard,
         iconCls: 'el-icon-menu'
     },
-];
+]

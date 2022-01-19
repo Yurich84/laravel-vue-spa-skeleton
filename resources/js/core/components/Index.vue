@@ -10,12 +10,12 @@
 </template>
 
 <script>
-    export default {
-        name: "Index",
-        data: () => ({
-            title: window.config.appName
-        }),
-    }
+export default {
+    name: 'Index',
+    data: () => ({
+        title: window.config.appName
+    }),
+}
 </script>
 
 <style lang="scss" scoped>

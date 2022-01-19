@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class AbstractRepository implements RepositoryInterface
 {
     /**
-     * @var string $class
+     * @var string
      */
     protected $class;
 
     /**
-     * @var Model $model
+     * @var Model
      */
     protected $model;
 
@@ -53,6 +53,7 @@ class AbstractRepository implements RepositoryInterface
     public function update(array $data, Model $model): Model
     {
         $model->fill($data)->save();
+
         return $model;
     }
 
