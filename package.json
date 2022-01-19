@@ -7,7 +7,31 @@
         "watch-poll": "npm run watch -- --watch-poll",
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "lint": "./node_modules/.bin/eslint -c .eslintrc.js --ignore-path .gitignore resources/js/** --ext .js,.vue --max-warnings=0",
+        "lint-fix": "./node_modules/.bin/eslint -c .eslintrc.js --ignore-path .gitignore resources/js/** --ext .js,.vue --fix"
+    },
+    "lint-staged": {
+        "*.{js,vue}": [
+            "./node_modules/.bin/eslint -c .eslintrc.js --fix --max-warnings=0"
+        ],
+        "*.php": [
+            "vendor/bin/php-cs-fixer fix --diff --config=.php-cs-fixer.dist.php"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "devDependencies": {
+        "babel-eslint": "^10.1.0",
+        "browser-sync": "^2.26.14",
+        "browser-sync-webpack-plugin": "^2.0.1",
+        "eslint": "^7.20.0",
+        "eslint-plugin-vue": "^7.6.0",
+        "husky": "4",
+        "lint-staged": "11.1.2"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.15.4",
