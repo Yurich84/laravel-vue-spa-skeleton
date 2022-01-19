@@ -12,5 +12,5 @@ export const routes = [
         name: 'Show DummySingular',
         component: DummySingularView,
         hidden: true
-    }
+    },
 ]

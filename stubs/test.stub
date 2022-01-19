@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use App\Models\DummySingular;
+use App\Models\User;
 use Tests\TestCase;
 
 class DummySingularTest extends TestCase
@@ -24,7 +24,7 @@ class DummySingularTest extends TestCase
     {
         $this->actingAs($this->user)
             ->postJson(route('dummyVariablePlural.store'), [
-                'name' => 'Lorem'
+                'name' => 'Lorem',
             ])
             ->assertSuccessful()
             ->assertJson(['type' => Controller::RESPONSE_TYPE_SUCCESS]);
@@ -63,7 +63,7 @@ class DummySingularTest extends TestCase
             ->assertJson([
                 'data' => [
                     'name' => $dummyVariableSingular->name,
-                ]
+                ],
             ]);
     }
 
@@ -78,14 +78,14 @@ class DummySingularTest extends TestCase
             ->getJson(route('dummyVariablePlural.index'))
             ->assertSuccessful()
             ->assertJson([
-                 'data' => $dummyVariablePlural->toArray()
+                'data' => $dummyVariablePlural->toArray(),
             ])
             ->assertJsonStructure([
                 'data' => [
-                    '*' => ['id', 'name']
+                    '*' => ['id', 'name'],
                 ],
                 'links',
-                'meta'
+                'meta',
             ]);
     }
 

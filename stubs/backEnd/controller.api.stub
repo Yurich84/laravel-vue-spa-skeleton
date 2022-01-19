@@ -2,15 +2,15 @@
 
 namespace DummyRootNamespaceModules\DummySingular\Controllers;
 
+use DummyRootNamespaceHttp\Controllers\Controller;
 use DummyRootNamespaceModels\DummySingular;
 use DummyRootNamespaceModules\DummySingular\Requests\DummySingularRequest;
 use DummyRootNamespaceModules\DummySingular\Resources\DummySingularResource;
-use DummyRootNamespaceHttp\Controllers\Controller;
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
-use \Illuminate\Http\JsonResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use \Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class DummySingularController extends Controller
 {
@@ -25,7 +25,7 @@ class DummySingularController extends Controller
 
         $resource = DummySingular::query()
             ->when($request->filled('search'), function (Builder $q) use ($request) {
-                $q->where(DummySingular::COLUMN_NAME, 'like', '%' . $request->search . '%');
+                $q->where(DummySingular::COLUMN_NAME, 'like', '%'.$request->search.'%');
             })
             ->orderBy($column, $order)->paginate($pageSize);
 
@@ -42,9 +42,10 @@ class DummySingularController extends Controller
         $data = $request->validated();
         $dummyVariableSingular = new DummySingular($data);
         $dummyVariableSingular->save();
+
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
-            'message' => 'Successfully created'
+            'message' => 'Successfully created',
         ]);
     }
 
@@ -70,9 +71,10 @@ class DummySingularController extends Controller
     {
         $data = $request->validated();
         $dummyVariableSingular->fill($data)->save();
+
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
-            'message' => 'Successfully updated'
+            'message' => 'Successfully updated',
         ]);
     }
 
@@ -84,10 +86,10 @@ class DummySingularController extends Controller
     public function destroy(DummySingular $dummyVariableSingular)
     {
         $dummyVariableSingular->delete();
+
         return response()->json([
             'type' => self::RESPONSE_TYPE_SUCCESS,
-            'message' => 'Successfully deleted'
+            'message' => 'Successfully deleted',
         ]);
     }
-
 }
