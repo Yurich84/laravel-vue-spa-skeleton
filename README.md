@@ -6,6 +6,7 @@
 
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Yurich84/laravel-vue-spa-skeleton/Laravel?label=tests)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Yurich84/laravel-vue-spa-skeleton/Check%20&%20fix%20styling?label=style)
 ![GitHub all releases](https://img.shields.io/github/downloads/Yurich84/laravel-vue-spa-skeleton/total)
 
 #### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI. 
