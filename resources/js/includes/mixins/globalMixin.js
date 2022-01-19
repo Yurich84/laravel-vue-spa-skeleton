@@ -1,13 +1,7 @@
-import moment from 'moment'
+import {DATE_FORMAT, DATETIME_DB_FORMAT, DATETIME_FORMAT} from '@/core/constants/time.constants'
 
-const globalDateTimeDBFormat = 'YYYY-MM-DD HH:mm:ss';
-const globalDateFormat = 'DD/MM/YYYY';
-const globalDateTimeFormat = 'DD/MM/YYYY HH:mm';
 export default {
     data: () => ({
-        globalDateFormat: globalDateFormat,
-        globalDateTimeFormat: globalDateTimeFormat,
-        globalDateTimeDBFormat: globalDateTimeDBFormat,
         globalPageSize: 10,
     }),
     filters: {
@@ -15,20 +9,15 @@ export default {
             if (!value) return ''
             value = value.toString()
             return value.charAt(0).toUpperCase() + value.slice(1)
-        }
-    },
-    methods: {
-        /**
-         * @return {string}
-         */
-        GlobalFormatDate(datetime) {
-            return moment(datetime, globalDateTimeDBFormat).format(globalDateFormat)
         },
-        /**
-         * @return {string}
-         */
-        GlobalFormatTime(datetime) {
-            return moment(datetime, globalDateTimeDBFormat).format(globalDateTimeFormat)
-        }
-    }
+        price: function (number) {
+            return Number(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'')
+        },
+        date: function (datetime) {
+            return dayjs(datetime).isValid() ? dayjs(datetime, DATETIME_DB_FORMAT).format(DATE_FORMAT) : ''
+        },
+        time: function (datetime) {
+            return dayjs(datetime).isValid() ? dayjs(datetime, DATETIME_DB_FORMAT).format(DATETIME_FORMAT) : ''
+        },
+    },
 }
