@@ -1,12 +1,9 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import {routes} from '../core/routes'
+import { createRouter, createWebHistory } from 'vue-router'
+import {routes} from '@/core/routes'
 
-Vue.use(VueRouter)
-
-const router = new VueRouter({
+export default createRouter({
+    history: createWebHistory(),
     routes,
-    mode: 'history',
     scrollBehavior(to, from, savedPosition) {
         return new Promise((resolve) => {
             if (to.hash) {
@@ -19,7 +16,3 @@ const router = new VueRouter({
         })
     }
 })
-
-Vue.router = router
-
-export default router

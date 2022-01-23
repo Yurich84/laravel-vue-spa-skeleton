@@ -34,6 +34,8 @@ export class Errors {
         if (this.errors[field]) {
             return this.errors[field][0]
         }
+
+        return ''
     }
 
     /**

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import {Errors} from '../../../includes/Errors'
+import {Errors} from '@/includes/Errors'
 
 export default {
     name: 'LoginForm',
@@ -63,7 +63,7 @@ export default {
             form: {
                 email: '',
                 password: '',
-                device_name: this.config.deviceName
+                device_name: this.$config.deviceName
             },
             rules: {
                 email:      [{required:true, message: this.$t('global.form.rules.required', { 'fieldName': this.$t('auth.login.email_label')}), trigger: 'blur'}],

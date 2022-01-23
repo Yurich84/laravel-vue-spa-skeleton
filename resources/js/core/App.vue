@@ -1,20 +1,6 @@
 <template>
     <div class="app">
-        <transition
-            v-if="$auth.ready()"
-            name="fade"
-            mode="out-in"
-        >
-            <router-view :key="$route.fullPath" />
-        </transition>
-        <div
-            v-if="!$auth.ready()"
-            class="loading-screen"
-        >
-            <div class="loading-text">
-                <p>Loading ...</p>
-            </div>
-        </div>
+        <router-view :key="$route.fullPath" />
     </div>
 </template>
 

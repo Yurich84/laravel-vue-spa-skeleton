@@ -9,7 +9,7 @@ body {
 }
 
 .el-dialog {
-    @media screen and (max-width: $--sm - 1) {
+    @media screen and (max-width: $sm - 1) {
         width: 100% !important;
         border-radius: 0;
     }
@@ -18,7 +18,7 @@ body {
         padding-right: 35px;
     }
 
-    @media (max-width: $--xs - 1) {
+    @media (max-width: $xs - 1) {
         .el-form-item__label {
             width: auto !important;
         }

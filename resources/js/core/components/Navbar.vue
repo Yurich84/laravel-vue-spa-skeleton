@@ -8,7 +8,7 @@
             class="logo"
             :class="coreIsCollapsed?'logo-collapse-width':'logo-width'"
         >
-            {{ coreIsCollapsed ? '' : config.appName }}
+            {{ coreIsCollapsed ? '' : $config.appName }}
         </el-col>
         <el-col :span="10">
             <div
@@ -22,17 +22,21 @@
             :span="4"
             class="userinfo"
         >
-            <el-dropdown trigger="hover">
-                <span class="el-dropdown-link userinfo-inner"><img :src="sysUserAvatar"> {{ sysUserName }}</span>
-                <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item
-                        divided
-                        dusk="logout"
-                        @click.native="logout"
-                    >
-                        {{ $t('auth.logout.title') }}
-                    </el-dropdown-item>
-                </el-dropdown-menu>
+            <el-dropdown>
+                <span class="el-dropdown-link userinfo-inner">
+                    <img :src="sysUserAvatar">
+                    {{ sysUserName }}
+                </span>
+                <template #dropdown>
+                    <el-dropdown-menu>
+                        <el-dropdown-item
+                            divided
+                            @click.native="logout"
+                        >
+                            {{ $t('auth.logout.title') }}
+                        </el-dropdown-item>
+                    </el-dropdown-menu>
+                </template>
             </el-dropdown>
         </el-col>
     </el-col>

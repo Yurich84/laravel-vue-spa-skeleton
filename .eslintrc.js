@@ -31,7 +31,8 @@ module.exports = {
         'vue/static-class-names-order': 'off',
         'vue/order-in-components': 'off',
         'vue/no-v-html': 'off',
-        'vue/require-valid-default-prop': 'off'
+        'vue/require-valid-default-prop': 'off',
+        'vue/no-multiple-template-root': 'off'
     },
     'parserOptions': {
         'parser': 'babel-eslint',

@@ -7,7 +7,7 @@
             v-for="item in $route.matched"
             :key="item.path"
         >
-            {{ $t(item.name) || 'Home' }}
+            {{ $t(item.name || 'Home') }}
         </el-breadcrumb-item>
     </el-breadcrumb>
 </template>
@@ -19,12 +19,5 @@ export default {
     data() {
         return {}
     },
-    methods: {},
-    mounted() {
-    }
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -1,16 +1,13 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import {createI18n} from 'vue-i18n'
 import messages from './../includes/lang'
 import axios from 'axios'
 import {changeDayjsLocale} from './day'
-
-Vue.use(VueI18n)
 
 const DEFAULT_LANGUAGE = 'en'
 
 changeDayjsLocale(DEFAULT_LANGUAGE)
 
-const i18n = new VueI18n({
+const i18n = createI18n({
     locale: DEFAULT_LANGUAGE,
     messages,
     silentTranslationWarn: true

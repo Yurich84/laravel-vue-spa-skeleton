@@ -14,10 +14,10 @@ export default {
             return Number(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'')
         },
         date: function (datetime) {
-            return dayjs(datetime).isValid() ? dayjs(datetime, DATETIME_DB_FORMAT).format(DATE_FORMAT) : ''
+            return this.$dayjs(datetime).isValid() ? this.$dayjs(datetime, DATETIME_DB_FORMAT).format(DATE_FORMAT) : ''
         },
         time: function (datetime) {
-            return dayjs(datetime).isValid() ? dayjs(datetime, DATETIME_DB_FORMAT).format(DATETIME_FORMAT) : ''
+            return this.$dayjs(datetime).isValid() ? this.$dayjs(datetime, DATETIME_DB_FORMAT).format(DATETIME_FORMAT) : ''
         },
     },
 }

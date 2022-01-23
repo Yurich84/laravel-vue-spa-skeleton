@@ -23,7 +23,7 @@
                     >
                         <el-card shadow="always">
                             <h1 class="title text-center">
-                                {{ $t($route.name) }}
+                                {{ $t($route.name.toString()) }}
                             </h1>
                             <transition
                                 name="fade"
@@ -37,8 +37,13 @@
             </section>
         </el-col>
     </el-row>
-    <div v-else>
-        Loading ...
+    <div
+        v-if="!$auth.ready()"
+        class="loading-screen"
+    >
+        <div class="loading-text">
+            <p>Loading ...</p>
+        </div>
     </div>
 </template>
 
@@ -46,6 +51,7 @@
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import Breadcrumbs from './Breadcrumbs'
+
 export default {
     components: {Breadcrumbs, Sidebar, Navbar},
 }
@@ -54,6 +60,27 @@ export default {
 
 <style lang="scss">
     /*@import '~scss_vars';*/
+
+    div.loading-screen {
+        height: 100vh;
+
+        > .loading-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+
+            > p {
+                text-shadow: 1px 1px 3px #000000;
+                font-size: calc(3vh + 2vw);
+                color: #ffffff;
+            }
+        }
+    }
 
     .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 230px;
