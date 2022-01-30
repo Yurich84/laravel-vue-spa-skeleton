@@ -16,16 +16,16 @@
                     :route="item"
                     :index="item.path"
                 >
-                    <i :class="item.iconCls || 'el-icon-s-claim'" />
-                    <span slot="title">{{ $t(item.name) }}</span>
+                    <i :class="item.icon || 'fa fa-th-large'" />
+                    <span slot="title">{{ $t(item.name.toString()) }}</span>
                 </el-menu-item>
-                <el-submenu
+                <el-sub-menu
                     v-if="item.children && !item.hidden"
                     :key="index"
                     :index="index+''"
                 >
                     <template slot="title">
-                        <i :class="item.iconCls || 'el-icon-s-claim'" />
+                        <i :class="item.icon || 'fa fa-th-large'" />
                         <span slot="title">{{ item.name }}</span>
                     </template>
                     <template v-for="child in item.children">
@@ -38,7 +38,7 @@
                             <span slot="title">{{ child.name }}</span>
                         </el-menu-item>
                     </template>
-                </el-submenu>
+                </el-sub-menu>
             </template>
         </el-menu>
     </aside>
@@ -80,5 +80,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+aside {
+    .el-menu {
+        height: calc(100vh - 60px);
+    }
 
+    .collapsed {
+        width: 60px;
+
+        .item {
+            position: relative;
+        }
+
+        .submenu {
+            position: absolute;
+            top: 0;
+            left: 60px;
+            z-index: 99999;
+            height: auto;
+            display: none;
+        }
+
+    }
+}
+
+.menu-collapsed {
+    flex: 0 0 60px;
+    width: 60px;
+}
+
+.menu-expanded {
+    flex: 0 0 230px;
+    width: 230px;
+}
+
+.el-menu-vertical-demo {
+    li.el-menu-item {
+        span {
+            margin-left: 10px;
+        }
+    }
+}
 </style>

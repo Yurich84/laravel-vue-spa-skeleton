@@ -5,6 +5,6 @@ export const routes = [
         path: '/',
         name: 'Dashboard',
         component: Dashboard,
-        iconCls: 'el-icon-menu'
+        icon: 'fa fa-th-large'
     },
 ]

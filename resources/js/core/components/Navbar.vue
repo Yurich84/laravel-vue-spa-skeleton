@@ -1,8 +1,5 @@
 <template>
-    <el-col
-        :span="24"
-        class="header"
-    >
+    <el-header class="header">
         <el-col
             :span="10"
             class="logo"
@@ -22,10 +19,10 @@
             :span="4"
             class="userinfo"
         >
+            <span>{{ sysUserName }}</span>
             <el-dropdown>
                 <span class="el-dropdown-link userinfo-inner">
                     <img :src="sysUserAvatar">
-                    {{ sysUserName }}
                 </span>
                 <template #dropdown>
                     <el-dropdown-menu>
@@ -39,7 +36,7 @@
                 </template>
             </el-dropdown>
         </el-col>
-    </el-col>
+    </el-header>
 </template>
 
 <script>
@@ -77,3 +74,69 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+.header {
+    height: 60px;
+    line-height: 60px;
+    background: #20a0ff;
+    color: #fff;
+    --el-header-padding: 0px !important;
+
+    .userinfo {
+        text-align: right;
+        padding-right: 35px;
+        float: right;
+
+        .userinfo-inner {
+            cursor: pointer;
+            color: #fff;
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 20px;
+                margin: 10px 0px 10px 10px;
+                float: right;
+            }
+        }
+    }
+
+    .logo {
+        //width:230px;
+        height: 60px;
+        font-size: 22px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-color: rgba(238, 241, 146, 0.3);
+        border-right-width: 1px;
+        border-right-style: solid;
+
+        img {
+            width: 40px;
+            float: left;
+            margin: 10px 10px 10px 18px;
+        }
+
+        .txt {
+            color: #fff;
+        }
+    }
+
+    .logo-width {
+        width: 230px;
+    }
+
+    .logo-collapse-width {
+        width: 65px
+    }
+
+    .tools {
+        padding: 0px 23px;
+        width: 14px;
+        height: 60px;
+        line-height: 60px;
+        cursor: pointer;
+    }
+}
+</style>
