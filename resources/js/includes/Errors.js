@@ -65,7 +65,7 @@ export class Errors {
      *
      * @param {string|null} field
      */
-    clear(field) {
+    clear(field = null) {
         if (field) {
             if (this.has(field)) {
                 delete this.errors[field]

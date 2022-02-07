@@ -5,7 +5,6 @@
             :model="form"
             label-width="120px"
             :rules="rules"
-            size="small"
             @submit.native.prevent="saveSubmit"
         >
             <el-form-item

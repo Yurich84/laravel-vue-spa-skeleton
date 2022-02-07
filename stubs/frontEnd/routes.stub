@@ -1,5 +1,5 @@
-import PageList from './components/DummySingularList'
-import PageView from './components/DummySingularView'
+import DummySingularList from './components/DummySingularList'
+import DummySingularView from './components/DummySingularView'
 
 export const routes = [
     {

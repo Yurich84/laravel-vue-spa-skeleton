@@ -14,9 +14,9 @@
                 <el-form-item>
                     <el-button
                         type="primary"
-                        icon="el-icon-plus"
                         @click="handleAdd"
                     >
+                        <i class="fa fa-plus" />
                         {{ $t('global.add') }}
                     </el-button>
                 </el-form-item>
@@ -44,7 +44,7 @@
             highlight-current-row
             class="w-100"
             @sort-change="handleSortChange"
-            @filter-change="handleFilterChange"
+            @filter-change="fetchData"
         >
             <el-table-column
                 prop="id"
@@ -57,7 +57,7 @@
                 min-width="200"
                 sortable
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <router-link
                         :to="{name: 'Show DummySingular', params: {id: scope.row.id}}"
                         class="el-link el-link--default ellipsis-form"
@@ -75,8 +75,8 @@
                 label="Updated"
                 width="200"
             >
-                <template slot-scope="updated_at">
-                    {{ GlobalFormatDate(updated_at.row.updated_at) }}
+                <template #default="scope">
+                    {{ $filters.date(scope.row.updated_at) }}
                 </template>
             </el-table-column>
             <el-table-column
@@ -84,32 +84,34 @@
                 width="130"
                 align="right"
             >
-                <template slot-scope="scope">
+                <template #default="scope">
                     <el-tooltip
-                        :open-delay="300"
+                        :show-after="300"
                         :content="$t('global.edit')"
                         placement="top"
                     >
                         <span>
                             <el-button
-                                size="mini"
-                                icon="el-icon-edit"
+                                size="small"
                                 @click="handleEdit(scope.row)"
-                            />
+                            >
+                                <i class="fas fa-pencil-alt" />
+                            </el-button>
                         </span>
                     </el-tooltip>
                     <el-tooltip
-                        :open-delay="300"
+                        :show-after="300"
                         :content="$t('global.delete')"
                         placement="top"
                     >
                         <span>
                             <el-button
                                 type="danger"
-                                size="mini"
-                                icon="el-icon-delete"
+                                size="small"
                                 @click="handleDelete(scope.row)"
-                            />
+                            >
+                                <i class="fa fa-trash" />
+                            </el-button>
                         </span>
                     </el-tooltip>
                 </template>
@@ -118,19 +120,20 @@
 
         <!-- pagination -->
         <el-pagination
-            :current-page.sync="page"
-            :page-size.sync="globalPageSize"
-            :total="dummyVariablePluralMeta.total"
-            layout="sizes, prev, pager, next"
-            class="float-right mt-3 mb-3"
+            :current-page="page"
+            :page-size="pageSize"
+            :total="productsMeta.total || 0"
+            layout="total, sizes, prev, pager, next"
+            class="float-right my-3 mb-3"
+            @size-change="fetchData"
+            @current-change="fetchData"
         />
 
         <!-- form dialog -->
         <el-dialog
+            v-model="formVisible"
             :title="formTitle"
-            :visible.sync="formVisible"
             close-on-click-modal
-            class="dummyVariablePlural-dialog"
         >
             <DummySingularForm
                 :initial-form="formData"
@@ -158,6 +161,7 @@ export default {
                 search: ''
             },
             page: 1,
+            pageSize: 10,
             formVisible: false,
             formTitle: 'New DummySingular',
             formData: null
@@ -168,14 +172,6 @@ export default {
     },
     created() {
         this.fetchData()
-    },
-    watch:{
-        page: function () {
-            this.fetchData()
-        },
-        pageSize: function () {
-            this.fetchData()
-        },
     },
     methods: {
         ...mapActions([DUMMY_VARIABLE_SINGULAR_FETCH]),
