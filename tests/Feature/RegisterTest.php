@@ -12,8 +12,6 @@ class RegisterTest extends TestCase
     /** @test */
     public function can_register()
     {
-        Config::set('auth.defaults.guard', 'web');
-
         $response = $this->postJson(route('register'), [
             User::COLUMN_NAME => 'Test User',
             User::COLUMN_EMAIL => 'test@test.app',
