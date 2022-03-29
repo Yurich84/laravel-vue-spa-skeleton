@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class RegisterTest extends TestCase
