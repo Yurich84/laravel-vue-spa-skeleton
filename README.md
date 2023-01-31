@@ -4,10 +4,9 @@
 <img height="80" src="https://cdn.worldvectorlogo.com/logos/element-ui-1.svg">
 </p>
 
+# I am currently working on a new [Laravel Vue 3 project](https://github.com/Yurich84/laravel-vue3-spa) with Composition Api, Vite and Pinia as store manager.
+
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](LICENSE)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Yurich84/laravel-vue-spa-skeleton/Laravel?label=tests)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Yurich84/laravel-vue-spa-skeleton/Check%20&%20fix%20styling?label=style)
-![GitHub all releases](https://img.shields.io/github/downloads/Yurich84/laravel-vue-spa-skeleton/total)
 
 #### This is a basement for a large modular SPA, that utilises Laravel, Vue, ElementUI. 
 #### CRUD generator is integrated in project creates standalone modules on the frontend and backend.
